@@ -21,12 +21,21 @@
 
 using namespace std;
 
+int n;
 
 int main()
 {
     //FOI("input");
     //FOW("output");
     //write your programme here
+    
+
+    int i, j, k;
+    int n;
+    while(~scanf("%d", &n))
+    {
+        
+    }
 
     return 0;
 }
