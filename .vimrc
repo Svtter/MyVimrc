@@ -6,7 +6,7 @@
 "  < 判断操作系统是否是 Windows 还是 Linux >
 " -----------------------------------------------------------------------------
 "  我所添加的配置
-cd ~/workspace/cpp/cur "工作目录
+cd ~/workspace/ "工作目录
 autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp "模板
 set mouse-=a
 
@@ -146,8 +146,6 @@ Bundle 'bufexplorer.zip'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'Yggdroot/indentLine'
-" Bundle 'javacomplete'
-" Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 Bundle 'Mark--Karkat'
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 Bundle 'Shougo/neocomplcache.vim'
@@ -169,6 +167,16 @@ Bundle 'ZoomWin'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'            "用于markdown的着色
 Bundle 'arnaud-lb/vim-php-namespace'
+
+" java
+Bundle "vim-scripts/javacomplete"
+" Bundle "vim-scripts/Java-Syntax-and-Folding"
+Bundle "vim-scripts/javaDoc.vim"
+" Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
+
+" python
+Bundle "vim-scripts/Python-mode-klen"
+
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -610,43 +618,25 @@ nmap <F2> :NERDTreeToggle<CR>
 " 我使用上面的参数生成标签后，对函数使用跳转时会出现多个选择
 " 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
 set completeopt=menu                        "关闭预览窗口
+setlocal omnifunc=javacomplete#Complete
 
 " -----------------------------------------------------------------------------
 "  < powerline 插件配置 >
 " -----------------------------------------------------------------------------
-" 状态栏插件，更好的状态栏效果
+
 
 " -----------------------------------------------------------------------------
-"  < repeat 插件配置 >
+" Java compelte
 " -----------------------------------------------------------------------------
-" 主要用"."命令来重复上次插件使用的命令
+"
+autocmd Filetype java set omnifunc=javacomplete#Complete
+autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf 
+inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
+inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
+autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 "
 " -----------------------------------------------------------------------------
-"  < snipMate 插件配置 >
-" -----------------------------------------------------------------------------
-" 用于各种代码补全，这种补全是一种对代码中的词与代码块的缩写补全，详细用法可以参
-" 考使用说明或网络教程等。不过有时候也会与 supertab 插件在补全时产生冲突，如果大
-" 侠有什么其它解决方法希望不要保留呀
 
-" -----------------------------------------------------------------------------
-"  < SrcExpl 插件配置 >
-" -----------------------------------------------------------------------------
-" 增强源代码浏览，其功能就像Windows中的"Source Insight"
-nmap <F3> :SrcExplToggle<CR>                "打开/闭浏览窗口
-
-" " -----------------------------------------------------------------------------
-" "  < supertab 插件配置 >
-" " -----------------------------------------------------------------------------
-" " 我主要用于配合 omnicppcomplete 插件，在按 Tab 键时自动补全效果更好更快
-" " let g:supertabdefaultcompletiontype = "<c-x><c-u>"
-
-" -----------------------------------------------------------------------------
-"  < std_c 插件配置 >
-" -----------------------------------------------------------------------------
-" 用于增强C语法高亮
-
-" 启用 // 注视风格
-let c_cpp_comments = 0
 
 " -----------------------------------------------------------------------------
 "  < surround 插件配置 >
