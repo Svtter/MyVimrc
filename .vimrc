@@ -6,9 +6,9 @@
 "  < 判断操作系统是否是 Windows 还是 Linux >
 " -----------------------------------------------------------------------------
 "  我所添加的配置
-cd ~/workspace/ "工作目录
-autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp "模板
-set mouse-=a
+cd ~/workspace/ " 工作目录
+autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
+set mouse-=a    " 禁用鼠标
 
 
 
@@ -141,7 +141,7 @@ Bundle 'gmarik/vundle'
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
 Bundle 'Align'
-Bundle 'jiangmiao/auto-pairs'
+" Bundle 'jiangmiao/auto-pairs' "括号自动补全
 Bundle 'bufexplorer.zip'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
@@ -165,16 +165,18 @@ Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
 Bundle 'ZoomWin'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'            "用于markdown的着色
 Bundle 'arnaud-lb/vim-php-namespace'
 
-" java
+" ---用于markdown的着色
+Plugin 'plasticboy/vim-markdown'            
+
+" ---Java
 Bundle "vim-scripts/javacomplete"
-" Bundle "vim-scripts/Java-Syntax-and-Folding"
 Bundle "vim-scripts/javaDoc.vim"
+" Bundle "vim-scripts/Java-Syntax-and-Folding"
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
-" python
+" ---Python
 Bundle "vim-scripts/Python-mode-klen"
 
 
@@ -252,8 +254,8 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 10               "设置字体:字号（字体名称空格用下划线代替）
-set nowrap                                            "设置不自动换行
+set guifont=YaHei\ Consolas\ Hybrid\ 11              "设置字体:字号（字体名称空格用下划线代替）
+" set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 
 " 设置 gVim 窗口初始位置及大小
@@ -528,8 +530,8 @@ let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 " 如果是Windows系统, 则生成的文件在源文件所在盘符根目录的.symbs目录下(如: X:\.symbs\)
 " 如果是Linux系统, 则生成的文件在~/.symbs/目录下
 " 具体用法可参考www.vim.org中此插件的说明
-" <Leader>sy 自动生成tags与cscope文件并连接
-" <Leader>sc 连接已存在的tags与cscope文件
+" <Leader>sy "自动生成tags与cscope文件并连接
+" <Leader>sc "连接已存在的tags与cscope文件
 
 " -----------------------------------------------------------------------------
 "  < cSyntaxAfter 插件配置 >
