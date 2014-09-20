@@ -74,7 +74,7 @@ endif
 " -----------------------------------------------------------------------------
 if g:islinux
     set hlsearch        "高亮搜索
-    set incsearch       "在输入要搜索的文字时，实时匹配
+    " set incsearch       "在输入要搜索的文字时，实时匹配
 
     " Uncomment the following to have Vim jump to the last position when
     " reopening a file
@@ -504,7 +504,6 @@ set nobackup                                "设置无备份文件
 " -----------------------------------------------------------------------------
 "  <vim-markdown 插件配置>
 " -----------------------------------------------------------------------------
-" 
 let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 
 
@@ -515,6 +514,7 @@ let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 " 用于括号与引号自动补全，不过会与函数原型提示插件echofunc冲突
 " 所以我就没有加入echofunc插件
 
+
 " -----------------------------------------------------------------------------
 "  < BufExplorer 插件配置 >
 " -----------------------------------------------------------------------------
@@ -522,6 +522,7 @@ let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 " <Leader>be "在当前窗口显示缓存列表并打开选定文件
 " <Leader>bs 水平分割窗口显示缓存列表，并在缓存列表窗口中打开选定文件      
 " <Leader>bv 垂直分割窗口显示缓存列表，并在缓存列表窗口中打开选定文件
+
 
 " -----------------------------------------------------------------------------
 "  < ccvext.vim 插件配置 >
@@ -533,11 +534,13 @@ let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 " <Leader>sy "自动生成tags与cscope文件并连接
 " <Leader>sc "连接已存在的tags与cscope文件
 
+
 " -----------------------------------------------------------------------------
 "  < cSyntaxAfter 插件配置 >
 " -----------------------------------------------------------------------------
 " 高亮括号与运算符等
 au! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()
+
 
 " -----------------------------------------------------------------------------
 "  < indentLine 插件配置 >
@@ -559,10 +562,14 @@ let g:indentLine_color_term = 239
 " 设置 GUI 对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
 " let g:indentLine_color_gui = '#A4E57E'
 
+
+
 " -----------------------------------------------------------------------------
 "  < Mark--Karkat（也就是 Mark） 插件配置 >
 " -----------------------------------------------------------------------------
 " 给不同的单词高亮，表明不同的变量时很有用，详细帮助见 :h mark.txt
+
+
 
 " " -----------------------------------------------------------------------------
 " "  < MiniBufExplorer 插件配置 >
@@ -581,6 +588,7 @@ noremap <c-k> <c-w>k
 noremap <c-j> <c-w>j
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
+
 
 " -----------------------------------------------------------------------------
 "  < neocomplcache 插件配置 >
@@ -602,13 +610,17 @@ let g:neocomplcache_enable_at_startup = 1     "vim 启动时启用插件
 " <Leader>ca 在/*...*/与//这两种注释方式中切换（其它语言可能不一样了）
 " <Leader>cA 行尾注释
 let NERDSpaceDelims = 1                     "在左注释符之后，右注释符之前留有空格
+
+
+
 " -----------------------------------------------------------------------------
 "  < nerdtree 插件配置 >
 " -----------------------------------------------------------------------------
 " 有目录村结构的文件浏览插件
-
 " 常规模式下输入 F2 调用插件
 nmap <F2> :NERDTreeToggle<CR>
+
+
 
 " -----------------------------------------------------------------------------
 "  < omnicppcomplete 插件配置 >
@@ -622,6 +634,7 @@ nmap <F2> :NERDTreeToggle<CR>
 set completeopt=menu                        "关闭预览窗口
 setlocal omnifunc=javacomplete#Complete
 
+
 " -----------------------------------------------------------------------------
 "  < powerline 插件配置 >
 " -----------------------------------------------------------------------------
@@ -631,7 +644,6 @@ setlocal omnifunc=javacomplete#Complete
 " Java compelte
 " -----------------------------------------------------------------------------
 "
-autocmd Filetype java set omnifunc=javacomplete#Complete
 autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf 
 inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
@@ -645,7 +657,15 @@ autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 " -----------------------------------------------------------------------------
 " 快速给单词/句子两边增加符号（包括html标签），缺点是不能用"."来重复命令
 " 不过 repeat 插件可以解决这个问题，详细帮助见 :h surround.txt
-
+"
+" Old text                  Command     New text ~
+" "Hello *world!"           ds"         Hello world!
+" [123+4*56]/2              cs])        (123+456)/2
+" "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+" if *x>3 {                 ysW(        if ( x>3 ) {
+  "my $str = *whee!;        vllllS'     my $str = 'whee!';
+   
+   
 " -----------------------------------------------------------------------------
 "  < Syntastic 插件配置 >
 " -----------------------------------------------------------------------------
