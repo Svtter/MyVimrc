@@ -14,8 +14,9 @@ else
 endif
 
 
-
+" -----------------------------------------------------------------------------
 "  我所添加的配置
+" -----------------------------------------------------------------------------
 cd ~/workspace/ " 工作目录
 autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
 set mouse-=a    " 禁用鼠标
@@ -142,45 +143,45 @@ Bundle 'gmarik/vundle'
 " 想要更新，使用:PluginInstall
 " 嗖嗖的更新！～
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
-Bundle 'a.vim'
-Bundle 'Align'
-" Bundle 'jiangmiao/auto-pairs' "括号自动补全
-Bundle 'bufexplorer.zip'
-Bundle 'ccvext.vim'
-Bundle 'cSyntaxAfter'
-Bundle 'Yggdroot/indentLine'
-Bundle 'Mark--Karkat'
+ Bundle 'a.vim'
+ Bundle 'Align'
+" Bundle 'jiangmiao/auto-pairs'             "括号自动补全
+ Bundle 'bufexplorer.zip'
+ Bundle 'ccvext.vim'
+ Bundle 'cSyntaxAfter'
+ Bundle 'Yggdroot/indentLine'
+ Bundle 'Mark--Karkat'
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'OmniCppComplete'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'repeat.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'wesleyche/SrcExpl'
+ Bundle 'Shougo/neocomplcache.vim'
+ Bundle 'scrooloose/nerdcommenter'
+ Bundle 'scrooloose/nerdtree'
+ Bundle 'OmniCppComplete'
+ Bundle 'Lokaltog/vim-powerline'
+ Bundle 'repeat.vim'
+ Bundle 'msanders/snipmate.vim'
+ Bundle 'wesleyche/SrcExpl'
 " Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
-Bundle 'std_c.zip'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'taglist.vim'
-Bundle 'TxtBrowser'
-Bundle 'ZoomWin'
-Plugin 'godlygeek/tabular'
-Bundle 'arnaud-lb/vim-php-namespace'
+ Bundle 'std_c.zip'
+ Bundle 'tpope/vim-surround'
+ Bundle 'scrooloose/syntastic'
+ Bundle 'majutsushi/tagbar'
+ Bundle 'taglist.vim'
+ Bundle 'TxtBrowser'
+ Bundle 'ZoomWin'
+ Plugin 'godlygeek/tabular'
+ Bundle 'arnaud-lb/vim-php-namespace'
 
 " ---用于markdown的着色
 Plugin 'plasticboy/vim-markdown'            
 
 " ---Java
-Bundle "vim-scripts/javacomplete"
-Bundle "vim-scripts/javaDoc.vim"
-" Bundle "vim-scripts/Java-Syntax-and-Folding"
+ Bundle 'vim-scripts/javacomplete'
+ Bundle 'vim-scripts/javaDoc.vim'
+" Bundle 'vim-scripts/Java-Syntax-und-Folding'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
 " ---Python
-Bundle "vim-scripts/Python-mode-klen"
+ Bundle 'vim-scripts/Python-mode-klen'
 
 
 " -----------------------------------------------------------------------------
@@ -580,7 +581,7 @@ let g:indentLine_color_term = 239
 " " 快速浏览和操作Buffer
 " " 主要用于同时打开多个文件并相与切换
 
-" " let g:miniBufExplMapWindowNavArrows = 1     "用Ctrl加方向键切换到上下左右的窗口中去
+" let g:miniBufExplMapWindowNavArrows = 1     "用Ctrl加方向键切换到上下左右的窗口中去
 " let g:miniBufExplMapWindowNavVim = 1        "用<C-k,j,h,l>切换到上下左右的窗口中去
 " let g:miniBufExplMapCTabSwitchBufs = 1      "功能增强（不过好像只有在Windows中才有用）
 " "                                            <C-Tab> 向前循环切换到每个buffer上,并在但前窗口打开
@@ -647,10 +648,10 @@ setlocal omnifunc=javacomplete#Complete
 " Java compelte
 " -----------------------------------------------------------------------------
 "
-autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf 
-inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
-inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
-autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
+" autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf 
+" inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
+" inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
+" autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 "
 " -----------------------------------------------------------------------------
 
@@ -662,9 +663,9 @@ autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 " 不过 repeat 插件可以解决这个问题，详细帮助见 :h surround.txt
 "
 " Old text                  Command     New text ~
-" "Hello *world!"           ds"         Hello world!
+" \"Hello *world!"           ds"         Hello world!
 " [123+4*56]/2              cs])        (123+456)/2
-" "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+" \"Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 " if *x>3 {                 ysW(        if ( x>3 ) {
   "my $str = *whee!;        vllllS'     my $str = 'whee!';
    
@@ -674,6 +675,7 @@ autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 " -----------------------------------------------------------------------------
 " 用于保存文件时查检语法
 " 
+execute pathogen#infect()
 
 " -----------------------------------------------------------------------------
 " < 作者名 插入设置>
@@ -780,7 +782,7 @@ au BufRead,BufNewFile *.txt setlocal ft=txt
 " -----------------------------------------------------------------------------
 "  < cscope 工具配置 >
 " -----------------------------------------------------------------------------
-" 用Cscope自己的话说 - "你可以把它当做是超过频的ctags"
+" 用Cscope自己的话说 - \"你可以把它当做是超过频的ctags"
 if has("cscope")
     "设定可以使用 quickfix 窗口来查看 cscope 结果
     set cscopequickfix=s-,c-,d-,i-,t-,e-
