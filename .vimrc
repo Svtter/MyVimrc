@@ -182,6 +182,8 @@ Plugin 'plasticboy/vim-markdown'
 
 " ---Python
  Bundle 'vim-scripts/Python-mode-klen'
+" ---orgMode
+ Bundle 'jceb/vim-orgmode'
 
 
 " -----------------------------------------------------------------------------
