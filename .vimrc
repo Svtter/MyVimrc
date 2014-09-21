@@ -19,7 +19,7 @@ endif
 " -----------------------------------------------------------------------------
 cd ~/workspace/ " 工作目录
 autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
-set mouse-=a    " 禁用鼠标
+" set mouse-=a    " 禁用鼠标
 
 
 
@@ -182,8 +182,13 @@ Plugin 'plasticboy/vim-markdown'
 
 " ---Python
  Bundle 'vim-scripts/Python-mode-klen'
-" ---orgMode
- Bundle 'jceb/vim-orgmode'
+
+" ---org
+ " Bundle 'vim-orgMode'             "use :so %
+ Bundle 'tpope/vim-speeddating'
+ " Bundle 'vim-scripts/utl.vim'     "use :so %
+ " Bundle 'vim-scripts/calendar.vim'
+ " Bundel 'Syn'
 
 
 " -----------------------------------------------------------------------------
