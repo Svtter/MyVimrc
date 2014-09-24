@@ -7,10 +7,21 @@ MyVimrc
 Install
 ---
 
+### setup gvim
 - Ubuntu
+
     `sudo apt-get install vim-gnome`
+
 - Windows
+
     `百度一下直接下载。。。 `
+
+### setup vimrc
+
+```bash
+git clone https://github.com/Svtter/MyVimrc
+```
+使用ln -s链接到主目录下
 
 function
 ---
