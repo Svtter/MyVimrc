@@ -22,6 +22,10 @@ autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
 " set mouse-=a    " 禁用鼠标
 
 
+" -----------------------------------------------------------------------------
+"  快捷键设定
+" -----------------------------------------------------------------------------
+nnoremap , ggVG     ;全选
 
 "  end
 
@@ -172,7 +176,7 @@ Bundle 'gmarik/vundle'
  Bundle 'arnaud-lb/vim-php-namespace'
 
 " ---用于markdown的着色
-Plugin 'plasticboy/vim-markdown'            
+Plugin 'plasticboy/vim-markdown'
 
 " ---Java
  Bundle 'vim-scripts/javacomplete'
@@ -189,6 +193,10 @@ Plugin 'plasticboy/vim-markdown'
  " Bundle 'vim-scripts/utl.vim'     "use :so %
  " Bundle 'vim-scripts/calendar.vim'
  " Bundel 'Syn'
+ "
+
+" ---gdb
+Bundle 'skibyte/gdb-from-vim'
 
 
 " -----------------------------------------------------------------------------
@@ -531,7 +539,7 @@ let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
 " -----------------------------------------------------------------------------
 " 快速轻松的在缓存中切换（相当于另一种多个文件间的切换方式）
 " <Leader>be "在当前窗口显示缓存列表并打开选定文件
-" <Leader>bs 水平分割窗口显示缓存列表，并在缓存列表窗口中打开选定文件      
+" <Leader>bs 水平分割窗口显示缓存列表，并在缓存列表窗口中打开选定文件
 " <Leader>bv 垂直分割窗口显示缓存列表，并在缓存列表窗口中打开选定文件
 
 
@@ -655,9 +663,9 @@ setlocal omnifunc=javacomplete#Complete
 " Java compelte
 " -----------------------------------------------------------------------------
 "
-" autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf 
+" autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
 " inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
-" inoremap <buffer> <C-S-Space> <C-X><C-U><C-P> 
+" inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
 " autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
 "
 " -----------------------------------------------------------------------------
@@ -675,13 +683,13 @@ setlocal omnifunc=javacomplete#Complete
 " \"Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 " if *x>3 {                 ysW(        if ( x>3 ) {
   "my $str = *whee!;        vllllS'     my $str = 'whee!';
-   
-   
+
+
 " -----------------------------------------------------------------------------
 "  < Syntastic 插件配置 >
 " -----------------------------------------------------------------------------
 " 用于保存文件时查检语法
-" 
+"
 execute pathogen#infect()
 
 " -----------------------------------------------------------------------------
