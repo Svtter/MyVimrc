@@ -2,6 +2,7 @@ MyVimrc
 ===
 
 - backup myvimrc to avoid lose it
+- 最近在做一些Java开发和C++调试的扩充，配置文件中可能包含部分没有用的包。
 
 Install
 ---
@@ -10,8 +11,6 @@ Install
     `sudo apt-get install vim-gnome`
 - Windows
     `百度一下直接下载。。。 `
-
-
 
 function
 ---
