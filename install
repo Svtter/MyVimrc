@@ -1,0 +1,23 @@
+#!/bin/bash
+
+sudo apt-get install vim-gnome ctags cscope
+
+echo "It will remove your pre-config, continue or not(y/n)?"
+read tmp
+if test $tmp = "y"
+then
+    {
+        sudo rm -r $HOME/.vim
+        sudo rm $HOME/.vimrc
+        echo "Building \".vim\" ..."
+        ln -s $(pwd)/.vim/ $HOME/.vim
+        echo "Building \".vimrc\"..."
+        ln -s $(pwd)/.vimrc $HOME/.vimrc
+        echo "Install finished. This content __cannot__ be removed."
+    }
+else
+    echo "Nothing I can do."
+fi
+
+
+

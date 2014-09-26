@@ -1,5 +1,9 @@
+:Large	LargeFile.txt	/*:Large*
 :SyntaxIgnore	SyntaxRange.txt	/*:SyntaxIgnore*
 :SyntaxInclude	SyntaxRange.txt	/*:SyntaxInclude*
+:Unlarge	LargeFile.txt	/*:Unlarge*
+LargeFile-copyright	LargeFile.txt	/*LargeFile-copyright*
+LargeFile.txt	LargeFile.txt	/*LargeFile.txt*
 SyntaxRange-dependencies	SyntaxRange.txt	/*SyntaxRange-dependencies*
 SyntaxRange-description	SyntaxRange.txt	/*SyntaxRange-description*
 SyntaxRange-example	SyntaxRange.txt	/*SyntaxRange-example*
@@ -47,6 +51,8 @@ g:org_heading_highlight_levels	orgguide.txt	/*g:org_heading_highlight_levels*
 g:org_heading_shade_leading_stars	orgguide.txt	/*g:org_heading_shade_leading_stars*
 g:org_todo_keyword_faces	orgguide.txt	/*g:org_todo_keyword_faces*
 g:org_todo_keywords	orgguide.txt	/*g:org_todo_keywords*
+largefile	LargeFile.txt	/*largefile*
+largefile-history	LargeFile.txt	/*largefile-history*
 narrow-region	narrow_region.txt	/*narrow-region*
 narrow-region-disable	narrow_region.txt	/*narrow-region-disable*
 narrow-region-history	narrow_region.txt	/*narrow-region-history*

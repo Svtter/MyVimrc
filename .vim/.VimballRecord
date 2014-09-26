@@ -2,3 +2,4 @@ orgmode.vba: call delete('/home/svitter/.vim/ftdetect/org.vim')|call delete('/ho
 utl_3_0a.vba: call delete('/home/svitter/.vim/doc/utl_usr.txt')|call delete('/home/svitter/.vim/autoload/utl_lib.vim')|call delete('/home/svitter/.vim/plugin/utl.vim')|call delete('/home/svitter/.vim/plugin/utl_rc.vim')|call delete('/home/svitter/.vim/plugin/utl_scm.vim')|call delete('/home/svitter/.vim/plugin/utl_uri.vim')
 narrow_region.vba: call delete('/home/svitter/.vim/doc/narrow_region.txt')|call delete('/home/svitter/.vim/plugin/narrow_region.vim')|call delete('/home/svitter/.vim/autoload/narrow_region.vim')
 SyntaxRange-1.01.vmb: call delete('/home/svitter/.vim/autoload/SyntaxRange.vim')|call delete('/home/svitter/.vim/plugin/SyntaxRange.vim')|call delete('/home/svitter/.vim/doc/SyntaxRange.txt')
+LargeFile.vba: call delete('/home/svitter/.vim/plugin/LargeFile.vim')|call delete('/home/svitter/.vim/doc/LargeFile.txt')

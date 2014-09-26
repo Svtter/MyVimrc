@@ -6,12 +6,21 @@
 #include <algorithm>
 #include <queue>
 #include <cmath>
+#include <bitset>
 using namespace std;
 
-#define INF 0xffffff
+#define INF 0x3f3f3f3f
 #define ll long long int
 #define MEM(a) memset(a, 0, sizeof(a))
 #define MEMM(a) memset(b, -1, sizeof(b))
+#define DBG(x, n) cout << (x) << " " << (n) << endl;
+
+#define SL(a) strlen(a)
+#define RS(s) scanf("%s", (s))
+#define PI(r) printf("%d\n", (r))
+#define RI(a) scanf("%d", &(a))
+#define RII(a, b) scanf("%d%d", &(a), &(b))
+#define RIII(a, b, c) scanf("%d%d%d", &(a), &(b), &(c))
 
 #ifdef ONLINE_JUDGE
 #define FOI(file) 0
