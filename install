@@ -13,11 +13,8 @@ then
         ln -s $(pwd)/.vim/ $HOME/.vim
         echo "Building \".vimrc\"..."
         ln -s $(pwd)/.vimrc $HOME/.vimrc
-        echo "Install finished. This content __cannot__ be removed."
+        echo "Install finished."
     }
 else
     echo "Nothing I can do."
 fi
-
-
-
