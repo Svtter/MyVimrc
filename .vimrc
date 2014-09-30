@@ -17,7 +17,7 @@ endif
 " -----------------------------------------------------------------------------
 "  我所添加的配置
 " -----------------------------------------------------------------------------
-cd ~/workspace/ " 工作目录
+cd ~/workspace/cpp " 工作目录
 autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
 " set mouse-=a    " 禁用鼠标
 
@@ -130,7 +130,7 @@ endif
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " 如果想在 windows 安装就必需先安装 "git for window"，可查阅网上资料
 
-set nocompatible                                      "禁用 Vi 兼容模式
+set nocp                                              "禁用 Vi 兼容模式
 filetype off                                          "禁用文件类型侦测
 
 if g:islinux
