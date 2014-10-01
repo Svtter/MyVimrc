@@ -196,7 +196,7 @@ Plugin 'plasticboy/vim-markdown'
  "
 
 " ---gdb
-Bundle 'skibyte/gdb-from-vim'
+" Bundle 'skibyte/gdb-from-vim'
 
 " ---LargeFile
 Bundle 'vim-scripts/LargeFile'
