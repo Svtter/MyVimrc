@@ -8,16 +8,8 @@ MyVimrc
 Install
 ---
 
-### setup gvim
-- Ubuntu
-
-    `sudo apt-get install vim-gnome`
-
-- Windows
-
-    `百度一下直接下载。。。 `
-
-### setup vimrc
+__With Ubuntu__
+### setup .vimrc
 
 `bash install`  
 
