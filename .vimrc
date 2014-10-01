@@ -27,15 +27,28 @@ autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
 " -----------------------------------------------------------------------------
 nnoremap , ggVG     ;全选
 
+" 包含alt的快捷键绑定
+"
+
+nnoremap <A-n> <C-w>n
+nnoremap <A-s> <C-w>s
+nnoremap <A-v> <C-w>v
+nnoremap <A-c> <C-w>c
+nnoremap <A-o> <C-w>o
+nnoremap <A-R> <C-w>R
+nnoremap <A-r> <C-w>r
+nnoremap <A-=> <C-w>=
+
+
 "  end
 
 " -----------------------------------------------------------------------------
 "  < 判断是终端还是 Gvim >
 " -----------------------------------------------------------------------------
 if has("gui_running")
-    let g:isGUI = 1
+let g:isGUI = 1
 else
-    let g:isGUI = 0
+let g:isGUI = 0
 endif
 
 
@@ -47,74 +60,74 @@ endif
 "  < Windows Gvim 默认配置> 做了一点修改
 " -----------------------------------------------------------------------------
 if (g:iswindows && g:isGUI)
-    source $VIMRUNTIME/vimrc_example.vim
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
-    set diffexpr=MyDiff()
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+behave mswin
+set diffexpr=MyDiff()
 
-    function MyDiff()
-        let opt = '-a --binary '
-        if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-        if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-        let arg1 = v:fname_in
-        if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-        let arg2 = v:fname_new
-        if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-        let arg3 = v:fname_out
-        if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-        let eq = ''
-        if $VIMRUNTIME =~ ' '
-            if &sh =~ '\<cmd'
-                let cmd = '""' . $VIMRUNTIME . '\diff"'
-                let eq = '"'
-            else
-                let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-            endif
+function MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let eq = ''
+    if $VIMRUNTIME =~ ' '
+        if &sh =~ '\<cmd'
+            let cmd = '""' . $VIMRUNTIME . '\diff"'
+            let eq = '"'
         else
-            let cmd = $VIMRUNTIME . '\diff'
+            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
         endif
-        silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-    endfunction
+    else
+        let cmd = $VIMRUNTIME . '\diff'
+    endif
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
 endif
 
 " -----------------------------------------------------------------------------
 "  < Linux Gvim/Vim 默认配置> 做了一点修改
 " -----------------------------------------------------------------------------
 if g:islinux
-    set hlsearch        "高亮搜索
-    " set incsearch       "在输入要搜索的文字时，实时匹配
+set hlsearch        "高亮搜索
+" set incsearch       "在输入要搜索的文字时，实时匹配
 
-    " Uncomment the following to have Vim jump to the last position when
-    " reopening a file
-    if has("autocmd")
-        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+if g:isGUI
+    " Source a global configuration file if available
+    if filereadable("/etc/vim/gvimrc.local")
+        source /etc/vim/gvimrc.local
+    endif
+else
+    " This line should not be removed as it ensures that various options are
+    " properly set to work with the Vim-related packages available in Debian.
+    runtime! debian.vim
+
+    " Vim5 and later versions support syntax highlighting. Uncommenting the next
+    " line enables syntax highlighting by default.
+    if has("syntax")
+        syntax on
     endif
 
-    if g:isGUI
-        " Source a global configuration file if available
-        if filereadable("/etc/vim/gvimrc.local")
-            source /etc/vim/gvimrc.local
-        endif
-    else
-        " This line should not be removed as it ensures that various options are
-        " properly set to work with the Vim-related packages available in Debian.
-        runtime! debian.vim
+    set mouse-=a                    " 在任何模式下启用鼠标
+    set t_Co=256                   " 在终端启用256色
+    set backspace=2                " 设置退格键可用
 
-        " Vim5 and later versions support syntax highlighting. Uncommenting the next
-        " line enables syntax highlighting by default.
-        if has("syntax")
-            syntax on
-        endif
-
-        set mouse-=a                    " 在任何模式下启用鼠标
-        set t_Co=256                   " 在终端启用256色
-        set backspace=2                " 设置退格键可用
-
-        " Source a global configuration file if available
-        if filereadable("/etc/vim/vimrc.local")
-            source /etc/vim/vimrc.local
-        endif
+    " Source a global configuration file if available
+    if filereadable("/etc/vim/vimrc.local")
+        source /etc/vim/vimrc.local
     endif
+endif
 endif
 
 
@@ -134,11 +147,11 @@ set nocp                                              "禁用 Vi 兼容模式
 filetype off                                          "禁用文件类型侦测
 
 if g:islinux
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 else
-    set rtp+=$VIM/vimfiles/bundle/vundle/
-    call vundle#rc('$VIM/vimfiles/bundle/')
+set rtp+=$VIM/vimfiles/bundle/vundle/
+call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
 " 使用Vundle来管理Vundle，这个必须要有。
@@ -147,53 +160,53 @@ Bundle 'gmarik/vundle'
 " 想要更新，使用:PluginInstall
 " 嗖嗖的更新！～
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
- Bundle 'a.vim'
- Bundle 'Align'
+Bundle 'a.vim'
+Bundle 'Align'
 " Bundle 'jiangmiao/auto-pairs'             "括号自动补全
- Bundle 'bufexplorer.zip'
- Bundle 'ccvext.vim'
- Bundle 'cSyntaxAfter'
- Bundle 'Yggdroot/indentLine'
- Bundle 'Mark--Karkat'
+Bundle 'bufexplorer.zip'
+Bundle 'ccvext.vim'
+Bundle 'cSyntaxAfter'
+Bundle 'Yggdroot/indentLine'
+Bundle 'Mark--Karkat'
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
- Bundle 'Shougo/neocomplcache.vim'
- Bundle 'scrooloose/nerdcommenter'
- Bundle 'scrooloose/nerdtree'
- Bundle 'OmniCppComplete'
- Bundle 'Lokaltog/vim-powerline'
- Bundle 'repeat.vim'
- Bundle 'msanders/snipmate.vim'
- Bundle 'wesleyche/SrcExpl'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'OmniCppComplete'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'repeat.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'wesleyche/SrcExpl'
 " Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
- Bundle 'std_c.zip'
- Bundle 'tpope/vim-surround'
- Bundle 'scrooloose/syntastic'
- Bundle 'majutsushi/tagbar'
- Bundle 'taglist.vim'
- Bundle 'TxtBrowser'
- Bundle 'ZoomWin'
- Plugin 'godlygeek/tabular'
- Bundle 'arnaud-lb/vim-php-namespace'
+Bundle 'std_c.zip'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'taglist.vim'
+Bundle 'TxtBrowser'
+Bundle 'ZoomWin'
+Plugin 'godlygeek/tabular'
+Bundle 'arnaud-lb/vim-php-namespace'
 
 " ---用于markdown的着色
 Plugin 'plasticboy/vim-markdown'
 
 " ---Java
- Bundle 'vim-scripts/javacomplete'
- Bundle 'vim-scripts/javaDoc.vim'
+Bundle 'vim-scripts/javacomplete'
+Bundle 'vim-scripts/javaDoc.vim'
 " Bundle 'vim-scripts/Java-Syntax-und-Folding'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
 " ---Python
- Bundle 'vim-scripts/Python-mode-klen'
+Bundle 'vim-scripts/Python-mode-klen'
 
 " ---org
- " Bundle 'vim-orgMode'             "use :so %
- Bundle 'tpope/vim-speeddating'
- " Bundle 'vim-scripts/utl.vim'     "use :so %
- " Bundle 'vim-scripts/calendar.vim'
- " Bundel 'Syn'
- "
+" Bundle 'vim-orgMode'             "use :so %
+Bundle 'tpope/vim-speeddating'
+" Bundle 'vim-scripts/utl.vim'     "use :so %
+" Bundle 'vim-scripts/calendar.vim'
+" Bundel 'Syn'
+"
 
 " ---gdb
 " Bundle 'skibyte/gdb-from-vim'
@@ -214,12 +227,12 @@ set fileformat=unix                                   "设置新文件的<EOL>�
 set fileformats=unix,dos,mac                          "给出文件的<EOL>格式类型
 
 if (g:iswindows && g:isGUI)
-    "解决菜单乱码
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
+"解决菜单乱码
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
-    "解决consle输出乱码
-    language messages zh_CN.utf-8
+"解决consle输出乱码
+language messages zh_CN.utf-8
 endif
 
 " -----------------------------------------------------------------------------
@@ -275,7 +288,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 11 "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 12 "设置字体:字号（字体名称空格用下划线代替）
 " set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 
