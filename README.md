@@ -19,7 +19,8 @@ Install
 
 ### setup vimrc
 
-`bash install`
+`bash install`  
+
     可能install脚本不够好用，存在部分问题。如果出现插件不识别的情况重新安装以下vundle,  
     或者打开.vimrc使用:PluginInstall命令
 
