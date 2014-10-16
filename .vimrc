@@ -251,7 +251,7 @@ set foldmethod=indent                                 "indent 折叠方式
 " set foldmethod=marker                                "marker 折叠方式
 
 " 用空格键来开关折叠
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " 当文件在外部被修改，自动更新该文件
 set autoread
@@ -289,7 +289,7 @@ set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
 set guifont=YaHei\ Consolas\ Hybrid\ 12 "设置字体:字号（字体名称空格用下划线代替）
-" set nowrap                                            "设置不自动换行
+set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 
 " 设置 gVim 窗口初始位置及大小
