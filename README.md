@@ -8,15 +8,15 @@ MyVimrc
 Install
 ---
 
-__1.With Ubuntu__
-### setup .vimrc
+###1.With Ubuntu
+#### setup .vimrc
 
 ```bash 
 cd 你想要的目录/
 git clone https://github.com/Svtter/MyVimrc
 sudo bash install
 ```
-__2.With Windows__
+###2.With Windows
 
 - 首先你需要安装`git`这个工具
 - 不安也行，下载右边的zip也行
