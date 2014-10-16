@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt-get install vim-gnome ctags cscope
+sudo apt-get install vim-gnome ctags cscope git
+
 
 echo "It will remove your pre-config, continue or not(y/n)?"
 read tmp
@@ -13,6 +14,8 @@ then
         ln -s $(pwd)/.vim/ $HOME/.vim
         echo "Building \".vimrc\"..."
         ln -s $(pwd)/.vimrc $HOME/.vimrc
+        echo "Now install vundle"
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         echo "Install finished."
     }
 else
