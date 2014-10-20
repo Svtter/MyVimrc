@@ -122,10 +122,6 @@ else
         set mouse-=a                   " 在任何模式下启用鼠标
         set t_Co=256                   " 在终端启用256色
         set backspace=2                " 设置退格键可用
-    set mouse-=a                    " 在任何模式下启用鼠标
-    set t_Co=256                   " 在终端启用256色
-    set backspace=2                " 设置退格键可用
-
     " Source a global configuration file if available
     if filereadable("/etc/vim/vimrc.local")
         source /etc/vim/vimrc.local
@@ -292,8 +288,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 11               "设置字体:字号（字体名称空格用下划线代替）
-set guifont=YaHei\ Consolas\ Hybrid\ 12 "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 10               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 

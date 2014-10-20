@@ -1,7 +1,0 @@
-#!/bin/bash
-
-git add --a
-echo "please input the commit information: "
-read temp
-git commit -m $temp
-git push
