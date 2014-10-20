@@ -41,8 +41,3 @@ Function
 - press tl to open tagelist
 - and so on.
 
-Task
----
-
-- [ ] 修改ctags支持的错误
-- [ ] dd
