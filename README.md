@@ -1,7 +1,7 @@
 MyVimrc
 ===
 
-- (task)[task.md)
+- [task](task.md)
 - backup myvimrc to avoid lose it
 - 最近在做一些Java开发和C++调试的扩充，配置文件中可能包含部分没有用的包。
 - 里面包含大量的来自vim-scripts的插件
