@@ -95,7 +95,7 @@ endif
 " -----------------------------------------------------------------------------
 if g:islinux
 set hlsearch        "高亮搜索
-" set incsearch       "在输入要搜索的文字时，实时匹配
+set incsearch       "在输入要搜索的文字时，实时匹配
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
