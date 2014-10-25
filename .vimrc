@@ -27,6 +27,9 @@ set mouse-=a    " 禁用鼠标
 " -----------------------------------------------------------------------------
 nnoremap ,, ggVG     ;全选
 
+" 打开任务__不够完善。
+nmap tk :execute 'e task.md'<CR>
+
 " 包含alt的快捷键绑定
 "
 
@@ -38,7 +41,6 @@ nnoremap <A-o> <C-w>o
 nnoremap <A-R> <C-w>R
 nnoremap <A-r> <C-w>r
 nnoremap <A-=> <C-w>=
-
 
 "  end
 
@@ -161,7 +163,9 @@ Bundle 'gmarik/vundle'
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
 Bundle 'Align'
-" Bundle 'jiangmiao/auto-pairs'             "括号自动补全
+
+" 括号自动补全全
+Bundle 'jiangmiao/auto-pairs'
 Bundle 'bufexplorer.zip'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
@@ -269,7 +273,7 @@ set smartcase                                         "如果搜索模式包含�
 " 插入模式下光标上下左右
 " imap <c-k> <Up>
 " imap <c-j> <Down>
-" imap <c-h> <Left>
+imap <c-h> <Left>
 imap <c-l> <Right>
 
 " Ctrl + B 插入模式下使用Home
