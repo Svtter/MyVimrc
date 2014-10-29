@@ -16,6 +16,14 @@ then
         ln -s $(pwd)/.vimrc $HOME/.vimrc
         echo "Now install vundle"
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        echo "Install fonts?"
+        read tmp
+        if test $tmp = "y"
+        then
+            {
+                bash install_fonts
+            }
+        fi
         echo "Install finished."
     }
 else
