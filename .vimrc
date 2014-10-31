@@ -169,6 +169,7 @@ Bundle 'Align'
 
 " 括号自动补全全
 Bundle 'jiangmiao/auto-pairs'
+ 
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
@@ -212,13 +213,16 @@ Bundle 'tpope/vim-speeddating'
 " Bundle 'vim-scripts/utl.vim'     "use :so %
 " Bundle 'vim-scripts/calendar.vim'
 " Bundel 'Syn'
-"
 
 " ---gdb
 " Bundle 'skibyte/gdb-from-vim'
 
 " ---LargeFile
 Bundle 'vim-scripts/LargeFile'
+
+" ---ibus support
+Bundle 'bouzuya/vim-ibus'
+
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -369,7 +373,7 @@ func! Compile()
     let s:LastShellReturn_C = 0
     let Sou = expand("%:p")
     let v:statusmsg = ''
-    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx" 
         let Obj = expand("%:p:r").s:Obj_Extension
         let Obj_Name = expand("%:p:t:r").s:Obj_Extension
         if !filereadable(Obj) || (filereadable(Obj) && (getftime(Obj) < getftime(Sou)))
@@ -427,7 +431,7 @@ func! Link()
     if s:Sou_Error || s:LastShellReturn_C != 0
         return
     endif
-    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx" 
         let s:LastShellReturn_L = 0
         let Sou = expand("%:p")
         let Obj = expand("%:p:r").s:Obj_Extension
