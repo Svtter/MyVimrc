@@ -11,8 +11,8 @@ read tmp
 if test $tmp = "y"
 then
     {
-        sudo rm -r $HOME/.vim
-        sudo rm $HOME/.vimrc
+        rm -r $HOME/.vim
+        rm $HOME/.vimrc
         echo "Building \".vim\" ..."
         ln -s $(pwd)/.vim/ $HOME/.vim
         echo "Building \".vimrc\"..."
