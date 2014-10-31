@@ -17,6 +17,8 @@ cd 你想要的目录/
 git clone https://github.com/Svtter/MyVimrc
 sudo bash install
 ```
+编辑.vimrc文件，输入:PluginInstall命令安装插件
+
 ###2.With Windows
 
 - 首先你需要安装`git`这个工具
@@ -30,7 +32,8 @@ FAQ
 ---
 
 1. 可能install脚本不够好用，存在部分问题。
-2. 如果出现插件不识别的情况重新安装以下vundle 或者打开.vimrc使用:PluginInstall命令
+2. 如果出现插件不识别的情况重新安装以下vundle 
+    或者打开.vimrc使用:PluginInstall命令
 
 ### 字体自己手动安装
 
