@@ -1,6 +1,9 @@
 #!/bin/bash
 
-sudo apt-get install vim-gnome ctags cscope git
+# if OS is Ubuntu
+# sudo apt-get install vim-gnome ctags cscope git
+# elsif
+# sudo yum install gvim
 
 
 echo "It will remove your pre-config, continue or not(y/n)?"
