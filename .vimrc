@@ -169,7 +169,7 @@ Bundle 'Align'
 
 " 括号自动补全全
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'bufexplorer.zip'
+Bundle 'jlanzarotta/bufexplorer'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'Yggdroot/indentLine'
