@@ -19,6 +19,7 @@ endif
 " -----------------------------------------------------------------------------
 cd ~/workspace/ " 工作目录
 autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
+autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
 
@@ -313,8 +314,10 @@ endif
 " 设置代码配色方案
 if g:isGUI
     colorscheme Tomorrow-Night-Eighties               "Gvim配色方案
+    " color evening
 else
     colorscheme Tomorrow-Night-Eighties               "终端配色方案
+    " color evening
 endif
 
 " 显示/隐藏菜单栏、工具栏、滚动条，可用 Ctrl + F11 切换
