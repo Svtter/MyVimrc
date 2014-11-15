@@ -167,15 +167,15 @@ Bundle 'gmarik/vundle'
 Bundle 'a.vim'
 Bundle 'Align'
 
-" 括号自动补全全
-Bundle 'jiangmiao/auto-pairs'
- 
+" 括号自动补全全 与 ibus 冲突
+" Bundle 'jiangmiao/auto-pairs'
+
+"  
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'Yggdroot/indentLine'
 Bundle 'Mark--Karkat'
-" Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
@@ -184,7 +184,6 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wesleyche/SrcExpl'
-" Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 Bundle 'std_c.zip'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
@@ -192,8 +191,11 @@ Bundle 'majutsushi/tagbar'
 Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
 Bundle 'ZoomWin'
-Plugin 'godlygeek/tabular'
+Bundle 'godlygeek/tabular'
 Bundle 'arnaud-lb/vim-php-namespace'
+
+" Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
+" Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 
 " ---用于markdown的着色
 Plugin 'plasticboy/vim-markdown'
@@ -201,6 +203,7 @@ Plugin 'plasticboy/vim-markdown'
 " ---Java
 Bundle 'vim-scripts/javacomplete'
 Bundle 'vim-scripts/javaDoc.vim'
+
 " Bundle 'vim-scripts/Java-Syntax-und-Folding'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
@@ -208,20 +211,17 @@ Bundle 'vim-scripts/javaDoc.vim'
 Bundle 'vim-scripts/Python-mode-klen'
 
 " ---org
-" Bundle 'vim-orgMode'             "use :so %
 Bundle 'tpope/vim-speeddating'
-" Bundle 'vim-scripts/utl.vim'     "use :so %
-" Bundle 'vim-scripts/calendar.vim'
-" Bundel 'Syn'
 
-" ---gdb
-" Bundle 'skibyte/gdb-from-vim'
+" Bundle 'vim-scripts/utl.vim'     "use :so %
+" Bundle 'vim-orgMode'             "use :so %
+" Bundle 'vim-scripts/calendar.vim'
 
 " ---LargeFile
 Bundle 'vim-scripts/LargeFile'
 
 " ---ibus support
-Bundle 'bouzuya/vim-ibus'
+" Bundle 'bouzuya/vim-ibus'
 
 
 " -----------------------------------------------------------------------------
