@@ -19,8 +19,9 @@ Install
 cd 你想要的目录/
 git clone https://github.com/Svtter/MyVimrc
 sudo bash install
+vim .vimrc
+:PluginInstall   <在vim中使用，vundle本身是一个插件（用于管理插件的插件）>
 ```
-编辑.vimrc文件，输入:PluginInstall命令安装插件
 
 ###2.With Windows
 
@@ -42,11 +43,13 @@ FAQ
 
 Function
 ---
-- press F4 add my information to source file
-- press F9 to compile the cpp file
-- press F8 to use gdb debug
-- press F2 to open NerdTree (File anager)
-- press tl to open tagelist
+
+- 更多功能，请细看vimrc
+- press F4 添加个人信息
+- press F9 编译运行cpp
+- press F8 使用gdb调试
+- press F2 打开nerdtree
+- press tl 打开taglist 
 
 Task
 ---
