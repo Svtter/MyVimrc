@@ -7,7 +7,7 @@ MyVimrc
 
 运行截图:
 ===
-- [截图](install_pic/截屏.png)
+![截图](install_pic/截屏.png)
 
 Install
 ---

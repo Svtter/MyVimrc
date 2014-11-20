@@ -538,7 +538,7 @@ func! Run()
                 exe ":!%<.exe"
             else
                 if g:isGUI
-                    exe ":!gnome-terminal -x bash -c './%<; echo; echo 请按 Enter 键继续; read'"
+                    exe ":!gnome-terminal -x bash -c 'time ./%<; echo; echo 请按 Enter 键继续; read'"
                 else
                     exe ":!clear; ./%<"
                 endif
