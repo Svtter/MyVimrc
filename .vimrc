@@ -26,10 +26,18 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " -----------------------------------------------------------------------------
 "  快捷键设定
 " -----------------------------------------------------------------------------
-nnoremap ,, ggVG     ;全选
 
+" 全选
+nmap ,, ggVG                        
+nmap ,r :source $MYVIMRC<CR>
+nmap ,e :e $MYVIMRC<CR>
 " 打开任务__不够完善。
 nmap tk :execute 'e task.md'<CR>
+" 打开Toc,用于markdown
+nmap tt :Toc<CR>
+" 快速保存
+nmap <leader>ww :w!<CR>
+
 
 " 生成tags
 noremap <F3> :execute '!ctags -R *'<CR>
@@ -171,7 +179,7 @@ Bundle 'Align'
 " 括号自动补全全 与 ibus 冲突
 " Bundle 'jiangmiao/auto-pairs'
 
-"  
+"
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
@@ -193,7 +201,6 @@ Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
 Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
-Bundle 'arnaud-lb/vim-php-namespace'
 
 " Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
@@ -210,6 +217,11 @@ Bundle 'vim-scripts/javaDoc.vim'
 
 " ---Python
 Bundle 'vim-scripts/Python-mode-klen'
+" Bundle 'klen/python-mode'
+
+" ---php
+Bundle 'arnaud-lb/vim-php-namespace'
+Plugin 'shawncplus/phpcomplete.vim'
 
 " ---org
 Bundle 'tpope/vim-speeddating'
@@ -303,6 +315,8 @@ set cursorline                                        "突出显示当前行
 set guifont=YaHei\ Consolas\ Hybrid\ 11               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
+set cul                                               "高亮当前行
+set cuc                                               "高亮当前列
 
 " 设置 gVim 窗口初始位置及大小
 if g:isGUI
@@ -313,10 +327,16 @@ endif
 
 " 设置代码配色方案
 if g:isGUI
-    colorscheme Tomorrow-Night-Eighties               "Gvim配色方案
+    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    " colorscheme Tomorrow-Night-Bright                  
+    " colorscheme Tomorrow-Night                         
+    colorscheme darkburn                                 
     " color evening
 else
-    colorscheme Tomorrow-Night-Eighties               "终端配色方案
+    " colorscheme Tomorrow-Night-Eighties               "终端配色方案
+    " colorscheme Tomorrow-Night-Brigfht                
+    " colorscheme Tomorrow-Night                        
+    colorscheme darkburn                               
     " color evening
 endif
 
@@ -376,7 +396,7 @@ func! Compile()
     let s:LastShellReturn_C = 0
     let Sou = expand("%:p")
     let v:statusmsg = ''
-    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx" 
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
         let Obj = expand("%:p:r").s:Obj_Extension
         let Obj_Name = expand("%:p:t:r").s:Obj_Extension
         if !filereadable(Obj) || (filereadable(Obj) && (getftime(Obj) < getftime(Sou)))
@@ -434,7 +454,7 @@ func! Link()
     if s:Sou_Error || s:LastShellReturn_C != 0
         return
     endif
-    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx" 
+    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
         let s:LastShellReturn_L = 0
         let Sou = expand("%:p")
         let Obj = expand("%:p:r").s:Obj_Extension
@@ -553,6 +573,7 @@ set nobackup                                "设置无备份文件
 "  <vim-markdown 插件配置>
 " -----------------------------------------------------------------------------
 let g:vim_markdown_initial_foldlevel=1  "调整markdown折叠的level
+let g:vim_markdown_math=1               "调整markdown数学支持
 
 
 
