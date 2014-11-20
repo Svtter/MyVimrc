@@ -29,7 +29,9 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 
 " 全选
 nmap ,, ggVG                        
-nmap ,r :source $MYVIMRC<CR>
+" 重新读入文件
+nmap ,r :so %<CR>
+" 快速编辑vimrc
 nmap ,e :e $MYVIMRC<CR>
 " 打开任务__不够完善。
 nmap tk :execute 'e task.md'<CR>
@@ -236,6 +238,9 @@ Bundle 'vim-scripts/LargeFile'
 " ---ibus support
 " Bundle 'bouzuya/vim-ibus'
 
+" ctrlp
+Bundle 'kien/ctrlp.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -375,6 +380,10 @@ imap <c-F9> <ESC>:call Compile()<CR>
 " Ctrl + F10 一键保存并连接
 map <c-F10> :call Link()<CR>
 imap <c-F10> <ESC>:call Link()<CR>
+
+" F8 编译调试（仅限于单文件)
+map <F8> :call Debug()<CR>
+imap <F8> <ESC>:call Debug()<CR>
 
 let s:LastShellReturn_C = 0
 let s:LastShellReturn_L = 0
@@ -540,6 +549,12 @@ func! Run()
     endif
 endfunc
 
+func! Debug()
+    exec 'w'
+    exec '!g++ % -g -o %<'
+    exec '!gdb ./%<'
+endfunc
+
 " -----------------------------------------------------------------------------
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
@@ -690,7 +705,7 @@ let NERDSpaceDelims = 1                     "在左注释符之后，右注释�
 " nmap <F2> : e $MYVIMRC<CR>
 nmap <F2> :NERDTreeToggle<CR>
 nmap ,d :NERDTreeToggle<CR>
-
+let NERDTreeIgnore=['\.pyc']
 
 
 " -----------------------------------------------------------------------------
@@ -835,6 +850,14 @@ let Tlist_Use_Right_Window=1                "在右侧窗口中显示
 " 用于文本文件生成标签与与语法高亮（调用TagList插件生成标签，如果可以）
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
+" -----------------------------------------------------------------------------
+" 设置ctrlp
+" -----------------------------------------------------------------------------
+set wildignore+=*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif 
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+" let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
+let g:ctrlp_extensions = ['funky']
 
 
 " -----------------------------------------------------------------------------

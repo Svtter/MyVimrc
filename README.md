@@ -41,9 +41,9 @@ Function
 ---
 - press F4 add my information to source file
 - press F9 to compile the cpp file
+- press F8 to use gdb debug
 - press F2 to open NerdTree (File anager)
 - press tl to open tagelist
-- and so on.
 
 Task
 ---
