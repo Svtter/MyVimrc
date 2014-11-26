@@ -27,34 +27,62 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 "  快捷键设定
 " -----------------------------------------------------------------------------
 
-" 全选
-nmap ,, ggVG                        
-" 重新读入文件
-nmap ,r :so %<CR>
-" 快速编辑vimrc
-nmap ,e :e $MYVIMRC<CR>
-" 打开任务__不够完善。
-nmap tk :execute 'e task.md'<CR>
-" 打开Toc,用于markdown
-nmap tt :Toc<CR>
-" 快速保存
-nmap <leader>ww :w!<CR>
+" ----------------------------------------------------------------------------
+" abbreviations设置
+" ----------------------------------------------------------------------------
+iabbrev @@ svtter@qq.com
+iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 
+
+" ----------------------------------------------------------------------------
+"  noremap设置
+" ----------------------------------------------------------------------------
+" 任何时候都是使用*noremap的形式，以非递归形式
+
+" 强迫不可用模式
+inoremap <Esc> <nop>
+
+" normal, 多用,作为开始
+" 全选
+nnoremap ,, ggVG                        
+nnoremap H 0
+nnoremap L $
+
+" 分屏设置
+nnoremap ,v :vs %<CR>
+nnoremap ,s :sp %<CR>
+nnoremap ,w :w<CR>
+nnoremap ,q :q<CR>
+nnoremap ," viw<esc>a"<esc>hbi"<esc>lel
+nnoremap ,( viw<esc>a)<esc>hbi(<esc>lel
+
+" 括号
+nnoremap ,cc %
+nnoremap ,cr d%
+nnoremap ,rl :so %<CR>
+
+" 快速编辑vimrc
+nnoremap ,e :vs $MYVIMRC<CR>
+
+" 快速编辑blog
+nnoremap ,b :e /home/svitter/svtter.github.io/source/_posts/<CR>
+nnoremap ,d :NERDTreeToggle<CR>
+
+" 用于缓存区的快速切换, t键
+nnoremap tn :bn<CR>
+nnoremap tp :bp<CR>
+nnoremap tk :execute 'e task.md'<CR>
+nnoremap tc :Toc<CR>
 
 " 生成tags
 noremap <F3> :execute '!ctags -R *'<CR>
 
-" 包含alt的快捷键绑定
-"
 
-nnoremap <A-n> <C-w>n
-nnoremap <A-s> <C-w>s
-nnoremap <A-v> <C-w>v
-nnoremap <A-c> <C-w>c
-nnoremap <A-o> <C-w>o
-nnoremap <A-R> <C-w>R
-nnoremap <A-r> <C-w>r
-nnoremap <A-=> <C-w>=
+" 编辑模式 <c-*>
+inoremap ii <ESC>
+inoremap <C-A> <esc>ggVG
+inoremap <c-d> <esc>ddi
+
 
 "  end
 
@@ -66,7 +94,6 @@ let g:isGUI = 1
 else
 let g:isGUI = 0
 endif
-
 
 " =============================================================================
 "                          << 以下为软件默认配置 >>
@@ -82,27 +109,27 @@ behave mswin
 set diffexpr=MyDiff()
 
 function MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let eq = ''
-    if $VIMRUNTIME =~ ' '
-        if &sh =~ '\<cmd'
-            let cmd = '""' . $VIMRUNTIME . '\diff"'
-            let eq = '"'
-        else
-            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        endif
+let opt = '-a --binary '
+if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+let arg1 = v:fname_in
+if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+let arg2 = v:fname_new
+if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+let arg3 = v:fname_out
+if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+let eq = ''
+if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+        let cmd = '""' . $VIMRUNTIME . '\diff"'
+        let eq = '"'
     else
-        let cmd = $VIMRUNTIME . '\diff'
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
     endif
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+else
+    let cmd = $VIMRUNTIME . '\diff'
+endif
+silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 endif
 
@@ -116,32 +143,32 @@ set incsearch       "在输入要搜索的文字时，实时匹配
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 if g:isGUI
-    " Source a global configuration file if available
-    if filereadable("/etc/vim/gvimrc.local")
-        source /etc/vim/gvimrc.local
-    endif
+" Source a global configuration file if available
+if filereadable("/etc/vim/gvimrc.local")
+    source /etc/vim/gvimrc.local
+endif
 else
-    " This line should not be removed as it ensures that various options are
-    " properly set to work with the Vim-related packages available in Debian.
-    runtime! debian.vim
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
 
-    " Vim5 and later versions support syntax highlighting. Uncommenting the next
-    " line enables syntax highlighting by default.
-    if has("syntax")
-        syntax on
-    endif
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+if has("syntax")
+    syntax on
+endif
 
-        set mouse-=a                   " 在任何模式下启用鼠标
-        set t_Co=256                   " 在终端启用256色
-        set backspace=2                " 设置退格键可用
-    " Source a global configuration file if available
-    if filereadable("/etc/vim/vimrc.local")
-        source /etc/vim/vimrc.local
-    endif
+    set mouse-=a                   " 在任何模式下启用鼠标
+    set t_Co=256                   " 在终端启用256色
+    set backspace=2                " 设置退格键可用
+" Source a global configuration file if available
+if filereadable("/etc/vim/vimrc.local")
+    source /etc/vim/vimrc.local
+endif
 endif
 endif
 
@@ -286,25 +313,25 @@ set foldmethod=indent                                 "indent 折叠方式
 set autoread
 
 " 常规模式下输入 cS 清除行尾空格
-nmap cS :%s/\s\+$//g<CR>:noh<CR>
+nnoremap cS :%s/\s\+$//g<CR>:noh<CR>
 
 " 常规模式下输入 cM 清除行尾 ^M 符号
-nmap cM :%s/\r$//g<CR>:noh<CR>
+nnoremap cM :%s/\r$//g<CR>:noh<CR>
 
 set ignorecase                                        "搜索模式里忽略大小写
 set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
 " set noincsearch                                       "在输入要搜索的文字时，取消实时匹配
 
 " 插入模式下光标上下左右
-" imap <c-k> <Up>
-" imap <c-j> <Down>
-imap <c-h> <Left>
-imap <c-l> <Right>
+" inoremap <c-k> <Up>
+" inoremap <c-j> <Down>
+inoremap <c-h> <Left>
+inoremap <c-l> <Right>
 
 " Ctrl + B 插入模式下使用Home
 " Ctrl + E 插入模式下使用End
-imap <c-b> <Home>
-imap <c-e> <End>
+inoremap <c-b> <Home>
+inoremap <c-e> <End>
 
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
@@ -317,7 +344,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 11               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 10               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -370,20 +397,24 @@ endif
 " 以下只做了 C、C++ 的单文件配置，其它语言可以参考以下配置增加
 
 " F9 一键保存、编译、连接存并运行
-map <F9> :call Run()<CR>
-imap <F9> <ESC>:call Run()<CR>
+noremap <F9> :call Run()<CR>
+inoremap <F9> <ESC>:call Run()<CR>
 
 " Ctrl + F9 一键保存并编译
-map <c-F9> :call Compile()<CR>
-imap <c-F9> <ESC>:call Compile()<CR>
+noremap <c-F9> :call Compile()<CR>
+inoremap <c-F9> <ESC>:call Compile()<CR>
 
 " Ctrl + F10 一键保存并连接
-map <c-F10> :call Link()<CR>
-imap <c-F10> <ESC>:call Link()<CR>
+noremap <c-F10> :call Link()<CR>
+inoremap <c-F10> <ESC>:call Link()<CR>
 
 " F8 编译调试（仅限于单文件)
-map <F8> :call Debug()<CR>
-imap <F8> <ESC>:call Debug()<CR>
+noremap <F8> :call Debug()<CR>
+inoremap <F8> <ESC>:call Debug()<CR>
+
+" <F5> 运行python
+noremap <F5> :call RunPy()<CR>
+inoremap <F5> <ESC>:call RunPy()<CR>
 
 let s:LastShellReturn_C = 0
 let s:LastShellReturn_L = 0
@@ -555,6 +586,15 @@ func! Debug()
     exec '!gdb ./%<'
 endfunc
 
+func! RunPy()
+    exec 'w'
+    if expand("%:e") == "md"
+        exe "!blog -g"
+    else
+        exe ":!gnome-terminal -x bash -c 'time python %; echo; echo 请按 Enter 键继续; read'"
+    endif
+endfunc
+
 " -----------------------------------------------------------------------------
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
@@ -632,7 +672,7 @@ au! BufRead,BufNewFile,BufEnter *.{c,cpp,h,java,javascript} call CSyntaxAfter()
 " 用于显示对齐线，与 indent_guides 在显示方式上不同，根据自己喜好选择了
 " 在终端上会有屏幕刷新的问题，这个问题能解决有更好了
 " 开启/关闭对齐线
-nmap <leader>il :IndentLinesToggle<CR>
+nnoremap <leader>il :IndentLinesToggle<CR>
 
 " 设置Gvim的对齐线样式
 if g:isGUI
@@ -702,9 +742,8 @@ let NERDSpaceDelims = 1                     "在左注释符之后，右注释�
 " -----------------------------------------------------------------------------
 " 有目录村结构的文件浏览插件
 " 常规模式下输入 F2 调用插件
-" nmap <F2> : e $MYVIMRC<CR>
-nmap <F2> :NERDTreeToggle<CR>
-nmap ,d :NERDTreeToggle<CR>
+" nnoremap <F2> : e $MYVIMRC<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc']
 
 
@@ -766,7 +805,7 @@ execute pathogen#infect()
 
 "进行版权声明的设置
 "添加或更新头
-map <F4> :call TitleDet()<cr>'s
+noremap <F4> :call TitleDet()<cr>'s
 function AddTitle()
     call append(0,"/*=============================================================================")
     call append(1,"#")
@@ -817,7 +856,7 @@ endfunction
 " 相对 TagList 能更好的支持面向对象
 
 " 常规模式下输入 tb 调用插件，如果有打开 TagList 窗口则先将其关闭
-nmap tb :TlistClose<CR>:TagbarToggle<CR>
+nnoremap tb :TlistClose<CR>:TagbarToggle<CR>
 
 let g:tagbar_width=30                       "设置窗口宽度
 " let g:tagbar_left=1                         "在左侧窗口中显示
@@ -829,7 +868,7 @@ let g:tagbar_width=30                       "设置窗口宽度
 " 那里面列出了当前文件中的所有宏,全局变量, 函数名等
 
 " 常规模式下输入 tl 调用插件，如果有打开 Tagbar 窗口则先将其关闭
-nmap tl :TagbarClose<CR>:Tlist<CR>
+nnoremap tl :TagbarClose<CR>:Tlist<CR>
 
 let Tlist_Show_One_File=1                   "只显示当前文件的tags
 " let Tlist_Enable_Fold_Column=0              "使taglist插件不显示左边的折叠行
@@ -886,14 +925,14 @@ if has("cscope")
     endif
     set cscopeverbose
     "快捷键设置
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+    nnoremap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+    nnoremap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+    nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
 " -----------------------------------------------------------------------------
@@ -909,7 +948,7 @@ set autochdir                               "自动选择当前目录
 " 用于 Windows Gvim 全屏窗口，可用 F11 切换
 " 全屏后再隐藏菜单栏、工具栏、滚动条效果更好
 if (g:iswindows && g:isGUI)
-    map <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
+    noremap <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
 endif
 
 " -----------------------------------------------------------------------------
@@ -945,9 +984,9 @@ if (g:iswindows && g:isGUI)
     endfunc
 
     "快捷键设置
-    map <c-up> :call Alpha_add()<CR>
-    map <c-down> :call Alpha_sub()<CR>
-    map <leader>t :call Top_window()<CR>
+    noremap <c-up> :call Alpha_add()<CR>
+    noremap <c-down> :call Alpha_sub()<CR>
+    noremap <leader>t :call Top_window()<CR>
 endif
 
 " =============================================================================
