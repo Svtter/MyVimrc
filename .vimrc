@@ -53,8 +53,13 @@ nnoremap ,v :vs %<CR>
 nnoremap ,s :sp %<CR>
 nnoremap ,w :w<CR>
 nnoremap ,q :q<CR>
+
+" 快速添加成对
 nnoremap ," viw<esc>a"<esc>hbi"<esc>lel
+nnoremap ,' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap ,( viw<esc>a)<esc>hbi(<esc>lel
+nnoremap ,[ viw<esc>a]<esc>hbi[<esc>lel
+nnoremap O i<CR><Esc>
 
 " 括号
 nnoremap ,cc %
@@ -62,7 +67,7 @@ nnoremap ,cr d%
 nnoremap ,rl :so %<CR>
 
 " 快速编辑vimrc
-nnoremap ,e :vs $MYVIMRC<CR>
+nnoremap ,e :e $MYVIMRC<CR>
 
 " 快速编辑blog
 nnoremap ,b :e /home/svitter/svtter.github.io/source/_posts/<CR>
@@ -81,7 +86,7 @@ noremap <F3> :execute '!ctags -R *'<CR>
 " 编辑模式 <c-*>
 inoremap ii <ESC>
 inoremap <C-A> <esc>ggVG
-inoremap <c-d> <esc>ddi
+inoremap <c-d> <BS>
 
 
 "  end
@@ -185,7 +190,7 @@ endif
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " 如果想在 windows 安装就必需先安装 "git for window"，可查阅网上资料
 
-set nocp                                              "禁用 Vi 兼容模式
+set nocompatible                                      "禁用 Vi 兼容模式
 filetype off                                          "禁用文件类型侦测
 
 if g:islinux
@@ -230,6 +235,7 @@ Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
 Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
+Bundle 'vimwiki/vimwiki'
 
 " Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
@@ -344,11 +350,12 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 10               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 11               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
 set cuc                                               "高亮当前列
+set display=lastline                                  "修正关于长行
 
 " 设置 gVim 窗口初始位置及大小
 if g:isGUI
@@ -359,16 +366,16 @@ endif
 
 " 设置代码配色方案
 if g:isGUI
-    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright                  
     " colorscheme Tomorrow-Night                         
-    colorscheme darkburn                                 
+    " colorscheme darkburn                                 
     " color evening
 else
-    " colorscheme Tomorrow-Night-Eighties               "终端配色方案
+    colorscheme Tomorrow-Night-Eighties               "终端配色方案
     " colorscheme Tomorrow-Night-Brigfht                
     " colorscheme Tomorrow-Night                        
-    colorscheme darkburn                               
+    " colorscheme darkburn                               
     " color evening
 endif
 
