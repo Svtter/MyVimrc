@@ -16,19 +16,6 @@ using namespace std;
 #define MEMM(a) memset(b, -1, sizeof(b))
 #define DEB(x, n) cout << (x) << " " << (n) << endl;
 
-// 字符串处理
-#define SL(a) strlen(a)
-#define SCM(a, b) strcmp(a, b)
-#define SCP(a, b) strcpy(a, b)
-
-// 输入函数
-#define RS(s) scanf("%s", (s))
-#define RI(a) scanf("%d", &(a))
-#define PI(r) printf("%d\n", (r))
-#define PS(s) printf("%s\n", (s))
-#define RII(a, b) scanf("%d%d", &(a), &(b))
-#define RIII(a, b, c) scanf("%d%d%d", &(a), &(b), &(c))
-
 // 应对ONLINE_JUDGE, 读入读出处理
 // 利用bash脚本调试数据
 #ifdef ONLINE_JUDGE
@@ -38,9 +25,6 @@ using namespace std;
 #define FOI(file) freopen(file,"r",stdin);
 #define FOW(file) freopen(file,"w",stdout);
 #endif
-
-// 定义常用工作变量
-int t, i, j, k;
 
 int main()
 {

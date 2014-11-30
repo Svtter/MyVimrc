@@ -74,9 +74,9 @@ nnoremap ,b :e /home/svitter/svtter.github.io/source/_posts/<CR>
 nnoremap ,d :NERDTreeToggle<CR>
 
 " 用于缓存区的快速切换, t键
-nnoremap tn :bn<CR>
-nnoremap tp :bp<CR>
-nnoremap tk :execute 'e task.md'<CR>
+nnoremap tj :bn<CR>
+nnoremap tk :bp<CR>
+nnoremap tn :tabnew<CR>
 nnoremap tc :Toc<CR>
 
 " 生成tags
@@ -87,6 +87,7 @@ noremap <F3> :execute '!ctags -R *'<CR>
 inoremap ii <ESC>
 inoremap <C-A> <esc>ggVG
 inoremap <c-d> <BS>
+inoremap <c-c> <Esc>ddkA<CR>
 
 
 "  end
@@ -163,9 +164,9 @@ runtime! debian.vim
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-if has("syntax")
-    syntax on
-endif
+" if has("syntax")
+    " syntax on
+" endif
 
     set mouse-=a                   " 在任何模式下启用鼠标
     set t_Co=256                   " 在终端启用256色
@@ -311,6 +312,7 @@ set smarttab                                          "指定按一次backspace�
 set foldenable                                        "启用折叠
 set foldmethod=indent                                 "indent 折叠方式
 " set foldmethod=marker                                "marker 折叠方式
+syntax on
 
 " 用空格键来开关折叠
 " nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
