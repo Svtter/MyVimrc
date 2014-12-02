@@ -86,7 +86,6 @@ noremap <F3> :execute '!ctags -R *'<CR>
 " 编辑模式 <c-*>
 inoremap ii <ESC>
 
-
 "  end
 
 " -----------------------------------------------------------------------------
@@ -329,13 +328,13 @@ set smartcase                                         "如果搜索模式包含�
 " set noincsearch                                       "在输入要搜索的文字时，取消实时匹配
 
 " 插入模式下光标上下左右
-" inoremap <c-k> <Up>
-" inoremap <c-j> <Down>
-inoremap <c-h> <Left>
-inoremap <c-l> <Right>
+inoremap <c-k> <Up>
+inoremap <c-j> <Down>
+
 
 " Ctrl + B 插入模式下使用Home
 " Ctrl + E 插入模式下使用End
+" 暂时使用本义
 inoremap <c-b> <Home>
 inoremap <c-e> <End>
 
