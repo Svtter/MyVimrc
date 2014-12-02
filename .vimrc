@@ -85,9 +85,6 @@ noremap <F3> :execute '!ctags -R *'<CR>
 
 " 编辑模式 <c-*>
 inoremap ii <ESC>
-inoremap <C-A> <esc>ggVG
-inoremap <c-d> <BS>
-inoremap <c-c> <Esc>ddkA<CR>
 
 
 "  end
@@ -353,7 +350,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 11               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 13               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -592,7 +589,7 @@ endfunc
 
 func! Debug()
     exec 'w'
-    exec '!g++ % -g -o %<'
+    exec '!g++ % -g -O2 -o %<'
     exec '!gdb ./%<'
 endfunc
 
