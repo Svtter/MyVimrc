@@ -254,6 +254,7 @@ Bundle 'vim-scripts/javaDoc.vim'
 " ---Python
 Bundle 'vim-scripts/Python-mode-klen'
 " Bundle 'klen/python-mode'
+Bundle 'vimGTD'
 
 " ---php
 Bundle 'arnaud-lb/vim-php-namespace'
