@@ -18,8 +18,13 @@ endif
 "  我所添加的配置
 " -----------------------------------------------------------------------------
 cd ~/workspace/ " 工作目录
-autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
-autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
+
+" cpp工作
+:autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
+:autocmd BufWritePre *.cpp :normal gg=G
+
+" Python
+:autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
 
@@ -429,8 +434,8 @@ let s:Obj_Extension = '.o'
 let s:Exe_Extension = '.exe'
 let s:Sou_Error = 0
 
-let s:windows_CFlags = 'gcc\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
-let s:linux_CFlags = 'gcc\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+let s:windows_CFlags = 'gcc\ -fexec-charset=gbk\ -Wall\ -g\ -lm\ -O0\ -c\ %\ -o\ %<.o'
+let s:linux_CFlags = 'gcc\ -Wall\ -g\ -lm\ -O0\ -c\ %\ -o\ %<.o'
 
 let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
@@ -803,7 +808,9 @@ setlocal omnifunc=javacomplete#Complete
 " -----------------------------------------------------------------------------
 " 用于保存文件时查检语法
 "
-execute pathogen#infect()
+" execute pathogen#infect()
+let g:syntastic_python_python_exec = '/usr/bin/python2'
+
 
 " -----------------------------------------------------------------------------
 " < 作者名 插入设置>
