@@ -17,7 +17,9 @@ endif
 " -----------------------------------------------------------------------------
 "  我所添加的配置
 " -----------------------------------------------------------------------------
-cd ~/workspace/ " 工作目录
+if exists("~/workspace")
+    cd ~/workspace/ " 工作目录
+endif
 
 
 "ACM
@@ -609,7 +611,7 @@ func! RunPy()
     if expand("%:e") == "md"
         exe "!blog -g"
     else
-        exe ":!gnome-terminal -x bash -c 'time python %; echo; echo 请按 Enter 键继续; read'"
+        exe ":!gnome-terminal -x bash -c 'time python -i  %; echo; echo 请按 Enter 键继续; read'"
     endif
 endfunc
 
