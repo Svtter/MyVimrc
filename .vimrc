@@ -19,12 +19,19 @@ endif
 " -----------------------------------------------------------------------------
 cd ~/workspace/ " 工作目录
 
-" cpp工作
-:autocmd BufNewFile *.cpp 0r ~/.vim/template/cpp/cppconfig.cpp   " C++模板
-:autocmd BufWritePre *.cpp :normal gg=G
+
+"ACM
+augroup ACM
+    autocmd! " 清空之前的配置
+    autocmd BufNewFile ACM_*.cpp 0r ~/.vim/template/cpp/ACM_config.cpp   " ACM C++模板
+    autocmd BufNewFile ACM_*.c 0r ~/.vim/template/cpp/ACM_config.c       " ACM C模板
+    " 保存自动整理代码
+    autocmd BufWritePre *.cpp :normal gg=G
+    autocmd BufWritePre *.c :normal gg=G
+augroup END
 
 " Python
-:autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
+autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
 
@@ -253,8 +260,7 @@ Bundle 'vim-scripts/javaDoc.vim'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
 " ---Python
-Bundle 'vim-scripts/Python-mode-klen'
-" Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
 Bundle 'vimGTD'
 
 " ---php
@@ -354,7 +360,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 13               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=YaHei\ Consolas\ Hybrid\ 12               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -521,7 +527,7 @@ func! Link()
             redraw!
             if !executable(Exe) || (executable(Exe) && getftime(Exe) < getftime(Obj))
                 if expand("%:e") == "c"
-                    setlocal makeprg=gcc\ -o\ %<\ %<.o
+                    setlocal makeprg=gcc\ -lm\ -o\ %<\ %<.o
                     echohl WarningMsg | echo " linking..."
                     silent make
                 elseif expand("%:e") == "cpp" || expand("%:e") == "cxx"
@@ -809,7 +815,7 @@ setlocal omnifunc=javacomplete#Complete
 " 用于保存文件时查检语法
 "
 " execute pathogen#infect()
-let g:syntastic_python_python_exec = '/usr/bin/python2'
+let g:pymode_python = 'python'
 
 
 " -----------------------------------------------------------------------------
