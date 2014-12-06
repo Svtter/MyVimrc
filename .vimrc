@@ -22,7 +22,8 @@ cd ~/workspace/ " 工作目录
 
 "ACM
 augroup ACM
-    autocmd! " 清空之前的配置
+    " 清空之前的配置
+    autocmd! 
     autocmd BufNewFile ACM_*.cpp 0r ~/.vim/template/cpp/ACM_config.cpp   " ACM C++模板
     autocmd BufNewFile ACM_*.c 0r ~/.vim/template/cpp/ACM_config.c       " ACM C模板
     " 保存自动整理代码
