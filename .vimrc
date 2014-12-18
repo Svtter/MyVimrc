@@ -22,21 +22,24 @@ if exists("~/workspace")
 endif
 
 
+" -----------------------------------------------------------------------------
+" autocmd
+" -----------------------------------------------------------------------------
+
 "ACM
 augroup ACM
     " 清空之前的配置
-    autocmd! 
+    autocmd!
     autocmd BufNewFile ACM_*.cpp 0r ~/.vim/template/cpp/ACM_config.cpp   " ACM C++模板
     autocmd BufNewFile ACM_*.c 0r ~/.vim/template/cpp/ACM_config.c       " ACM C模板
     " 保存自动整理代码
-    autocmd BufWritePre *.cpp :normal gg=G
-    autocmd BufWritePre *.c :normal gg=G
+    " autocmd BufWritePre *.cpp :normal gg=G
+    " autocmd BufWritePre *.c :normal gg=G
 augroup END
 
 " Python
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
-
 
 " -----------------------------------------------------------------------------
 "  快捷键设定
@@ -50,16 +53,15 @@ iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 
 
 " ----------------------------------------------------------------------------
-"  noremap设置
+"  map设置
 " ----------------------------------------------------------------------------
 " 任何时候都是使用*noremap的形式，以非递归形式
 
-" 强迫不可用模式
-inoremap <Esc> <nop>
 
 " normal, 多用,作为开始
 " 全选
-nnoremap ,, ggVG                        
+nnoremap ,, ggVG
+
 nnoremap H 0
 nnoremap L $
 
@@ -74,7 +76,7 @@ nnoremap ," viw<esc>a"<esc>hbi"<esc>lel
 nnoremap ,' viw<esc>a'<esc>hbi'<esc>lel
 nnoremap ,( viw<esc>a)<esc>hbi(<esc>lel
 nnoremap ,[ viw<esc>a]<esc>hbi[<esc>lel
-nnoremap O i<CR><Esc>
+nnoremap ,o i<CR><Esc>
 
 " 括号
 nnoremap ,cc %
@@ -97,9 +99,20 @@ nnoremap tc :Toc<CR>
 " 生成tags
 noremap <F3> :execute '!ctags -R *'<CR>
 
+" 常规模式下输入 cS 清除行尾空格
+nnoremap cS :%s/\s\+$//g<CR>:noh<CR>
 
-" 编辑模式 <c-*>
+" 常规模式下输入 cM 清除行尾 ^M 符号
+nnoremap cM :%s/\r$//g<CR>:noh<CR>
+
+
+" 强迫不可用模式
+inoremap <Esc> <nop>
 inoremap ii <ESC>
+
+" Movement
+" 编辑函数参数
+onoremap in( :<c-u>normal! f(vi(<cr>
 
 "  end
 
@@ -107,9 +120,9 @@ inoremap ii <ESC>
 "  < 判断是终端还是 Gvim >
 " -----------------------------------------------------------------------------
 if has("gui_running")
-let g:isGUI = 1
+    let g:isGUI = 1
 else
-let g:isGUI = 0
+    let g:isGUI = 0
 endif
 
 " =============================================================================
@@ -120,73 +133,73 @@ endif
 "  < Windows Gvim 默认配置> 做了一点修改
 " -----------------------------------------------------------------------------
 if (g:iswindows && g:isGUI)
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-set diffexpr=MyDiff()
+    source $VIMRUNTIME/vimrc_example.vim
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+    set diffexpr=MyDiff()
 
-function MyDiff()
-let opt = '-a --binary '
-if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-let arg1 = v:fname_in
-if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-let arg2 = v:fname_new
-if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-let arg3 = v:fname_out
-if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-let eq = ''
-if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-        let cmd = '""' . $VIMRUNTIME . '\diff"'
-        let eq = '"'
-    else
-        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-else
-    let cmd = $VIMRUNTIME . '\diff'
-endif
-silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
+    function MyDiff()
+        let opt = '-a --binary '
+        if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+        if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+        let arg1 = v:fname_in
+        if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+        let arg2 = v:fname_new
+        if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+        let arg3 = v:fname_out
+        if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+        let eq = ''
+        if $VIMRUNTIME =~ ' '
+            if &sh =~ '\<cmd'
+                let cmd = '""' . $VIMRUNTIME . '\diff"'
+                let eq = '"'
+            else
+                let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+            endif
+        else
+            let cmd = $VIMRUNTIME . '\diff'
+        endif
+        silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+    endfunction
 endif
 
 " -----------------------------------------------------------------------------
 "  < Linux Gvim/Vim 默认配置> 做了一点修改
 " -----------------------------------------------------------------------------
 if g:islinux
-set hlsearch        "高亮搜索
-set incsearch       "在输入要搜索的文字时，实时匹配
+    set hlsearch        "高亮搜索
+    set incsearch       "在输入要搜索的文字时，实时匹配
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-if has("autocmd")
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+    " Uncomment the following to have Vim jump to the last position when
+    " reopening a file
+    if has("autocmd")
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    endif
 
-if g:isGUI
-" Source a global configuration file if available
-if filereadable("/etc/vim/gvimrc.local")
-    source /etc/vim/gvimrc.local
-endif
-else
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
+    if g:isGUI
+        " Source a global configuration file if available
+        if filereadable("/etc/vim/gvimrc.local")
+            source /etc/vim/gvimrc.local
+        endif
+    else
+        " This line should not be removed as it ensures that various options are
+        " properly set to work with the Vim-related packages available in Debian.
+        runtime! debian.vim
 
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-" if has("syntax")
-    " syntax on
-" endif
+        " Vim5 and later versions support syntax highlighting. Uncommenting the next
+        " line enables syntax highlighting by default.
+        " if has("syntax")
+        " syntax on
+        " endif
 
-    set mouse-=a                   " 在任何模式下启用鼠标
-    set t_Co=256                   " 在终端启用256色
-    set backspace=2                " 设置退格键可用
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-    source /etc/vim/vimrc.local
-endif
-endif
+        set mouse-=a                   " 在任何模式下启用鼠标
+        set t_Co=256                   " 在终端启用256色
+        set backspace=2                " 设置退格键可用
+        " Source a global configuration file if available
+        if filereadable("/etc/vim/vimrc.local")
+            source /etc/vim/vimrc.local
+        endif
+    endif
 endif
 
 
@@ -206,11 +219,11 @@ set nocompatible                                      "禁用 Vi 兼容模式
 filetype off                                          "禁用文件类型侦测
 
 if g:islinux
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
 else
-set rtp+=$VIM/vimfiles/bundle/vundle/
-call vundle#rc('$VIM/vimfiles/bundle/')
+    set rtp+=$VIM/vimfiles/bundle/vundle/
+    call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
 " 使用Vundle来管理Vundle，这个必须要有。
@@ -301,12 +314,12 @@ set fileformat=unix                                   "设置新文件的<EOL>�
 set fileformats=unix,dos,mac                          "给出文件的<EOL>格式类型
 
 if (g:iswindows && g:isGUI)
-"解决菜单乱码
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+    "解决菜单乱码
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
 
-"解决consle输出乱码
-language messages zh_CN.utf-8
+    "解决consle输出乱码
+    language messages zh_CN.utf-8
 endif
 
 " -----------------------------------------------------------------------------
@@ -331,11 +344,6 @@ syntax on
 " 当文件在外部被修改，自动更新该文件
 set autoread
 
-" 常规模式下输入 cS 清除行尾空格
-nnoremap cS :%s/\s\+$//g<CR>:noh<CR>
-
-" 常规模式下输入 cM 清除行尾 ^M 符号
-nnoremap cM :%s/\r$//g<CR>:noh<CR>
 
 set ignorecase                                        "搜索模式里忽略大小写
 set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
@@ -363,7 +371,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=YaHei\ Consolas\ Hybrid\ 12               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ 11               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -379,16 +387,16 @@ endif
 
 " 设置代码配色方案
 if g:isGUI
-    colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
-    " colorscheme Tomorrow-Night-Bright                  
-    " colorscheme Tomorrow-Night                         
-    " colorscheme darkburn                                 
+    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    " colorscheme Tomorrow-Night-Bright
+    colorscheme Tomorrow-Night
+    " colorscheme darkburn
     " color evening
 else
     colorscheme Tomorrow-Night-Eighties               "终端配色方案
-    " colorscheme Tomorrow-Night-Brigfht                
-    " colorscheme Tomorrow-Night                        
-    " colorscheme darkburn                               
+    " colorscheme Tomorrow-Night-Brigfht
+    " colorscheme Tomorrow-Night
+    " colorscheme darkburn
     " color evening
 endif
 
@@ -399,16 +407,16 @@ if g:isGUI
     set guioptions-=r
     set guioptions-=L
     map <silent> <c-F11> :if &guioptions =~# 'm' <Bar>
-        \set guioptions-=m <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=r <Bar>
-        \set guioptions-=L <Bar>
-    \else <Bar>
-        \set guioptions+=m <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=r <Bar>
-        \set guioptions+=L <Bar>
-    \endif<CR>
+                \set guioptions-=m <Bar>
+                \set guioptions-=T <Bar>
+                \set guioptions-=r <Bar>
+                \set guioptions-=L <Bar>
+                \else <Bar>
+                \set guioptions+=m <Bar>
+                \set guioptions+=T <Bar>
+                \set guioptions+=r <Bar>
+                \set guioptions+=L <Bar>
+                \endif<CR>
 endif
 
 " -----------------------------------------------------------------------------
@@ -809,7 +817,7 @@ setlocal omnifunc=javacomplete#Complete
 " (123+4*56)/2              cs])        (123+456)/2
 " \"Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 " if *x>3 {                 ysW(        if ( x>3 ) {
-  "my $str = *whee!;        vllllS'     my $str = 'whee!';
+"my $str = *whee!;        vllllS'     my $str = 'whee!';
 
 
 " -----------------------------------------------------------------------------
@@ -910,7 +918,7 @@ au BufRead,BufNewFile *.txt setlocal ft=txt
 " -----------------------------------------------------------------------------
 " 设置ctrlp
 " -----------------------------------------------------------------------------
-set wildignore+=*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif 
+set wildignore+=*.so,*.swp,*.zip,*.pyc,*.png,*.jpg,*.gif
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
@@ -941,7 +949,7 @@ if has("cscope")
     "在当前目录中添加任何数据库
     if filereadable("cscope.out")
         cs add cscope.out
-    "否则添加数据库环境中所指出的
+        "否则添加数据库环境中所指出的
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
