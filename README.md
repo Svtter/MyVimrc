@@ -20,8 +20,7 @@ MyVimrc
 安装 Install
 ---
 
-###1.With Ubuntu
-#### setup .vimrc
+####Linux
 
 ```bash 
 cd 你想要的目录/
@@ -31,7 +30,7 @@ sudo bash install
 
 此外，还有更多的选项，可以通过`bash install help`查看
 
-###2.With Windows
+####Windows
 
 - 首先你需要安装`git`这个工具
 - 不安也行，下载右边的zip也行
@@ -45,8 +44,6 @@ sudo bash install
 
 1. 如果出现插件不识别的情况重新安装以下vundle 
     或者打开.vimrc使用:PluginInstall命令
-
-### 字体自己手动安装
 
 功能 Function
 ---
