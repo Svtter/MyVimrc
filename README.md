@@ -1,15 +1,23 @@
 MyVimrc
 ===
 
+- 本vimrc用于备份我的vimrc，也是为了通用型。
 - [task](#task)
-- backup myvimrc to avoid lose it
-- 里面包含大量的来自vim-scripts的插件
+- 包含大量的来自vim-scripts的插件
 
-运行截图:
-===
+运行截图 Running Image
+---
 ![截图](install_pic/截屏.png)
 
-Install
+运行环境 Environment
+---
+
+- gvim or vim, git
+- 特别的，如果你的环境是Ubuntu，直接使用:
+- `sudo apt-get gvim git`即可
+
+
+安装 Install
 ---
 
 ###1.With Ubuntu
@@ -19,9 +27,9 @@ Install
 cd 你想要的目录/
 git clone https://github.com/Svtter/MyVimrc
 sudo bash install
-vim .vimrc
-:PluginInstall   <在vim中使用，vundle本身是一个插件（用于管理插件的插件）>
 ```
+
+此外，还有更多的选项，可以通过`bash install help`查看
 
 ###2.With Windows
 
@@ -32,16 +40,15 @@ vim .vimrc
 不过最简单的解决方案就是转移到Linux。
 不爽你就咬我啊。
 
-FAQ
+一般的问题 FAQ
 ---
 
-1. 可能install脚本不够好用，存在部分问题。
-2. 如果出现插件不识别的情况重新安装以下vundle 
+1. 如果出现插件不识别的情况重新安装以下vundle 
     或者打开.vimrc使用:PluginInstall命令
 
 ### 字体自己手动安装
 
-Function
+功能 Function
 ---
 
 - 更多功能，请细看vimrc
@@ -54,4 +61,4 @@ Function
 Task
 ---
 - [ ] add task.vim
-- [ ] use gdb
+- [x] use gdb

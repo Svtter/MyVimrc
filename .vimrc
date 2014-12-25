@@ -371,7 +371,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ 11               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ Bold\ 11               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -387,9 +387,9 @@ endif
 
 " 设置代码配色方案
 if g:isGUI
-    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright
-    colorscheme Tomorrow-Night
+    " colorscheme Tomorrow-Night
     " colorscheme darkburn
     " color evening
 else
@@ -619,7 +619,7 @@ func! RunPy()
     if expand("%:e") == "md"
         exe "!blog -g"
     else
-        exe ":!gnome-terminal -x bash -c 'time python -i  %; echo; echo 请按 Enter 键继续; read'"
+        exe ":!gnome-terminal -x bash -c 'make; echo; echo 请按 Enter 键继续; read'"
     endif
 endfunc
 

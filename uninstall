@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo "This will remove your config, continue? (If you do not wanna this, input <c-c>)"
-read tmp
-rm $HOME/.vim
-rm $HOME/.vimrc
-

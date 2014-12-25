@@ -1,7 +1,0 @@
-#!/bin/bash
-# rebuild link
-
-ln -s $(pwd)/.vimrc $HOME/.vimrc
-ln -s $(pwd)/.vim $HOME/.vim
-
-echo "done."

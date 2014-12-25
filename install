@@ -1,34 +1,116 @@
 #!/bin/bash
 
-# if OS is Ubuntu
-# sudo apt-get install vim-gnome ctags cscope git
-# elsif
-# sudo yum install gvim
+
+# unfinished
+function judge_OS
+{
+    cat /etc/issue
+}
+
+# remove pre config
+function remove_pre
+{
+    echo "It will remove your pre-config, continue or not(y/n)?"
+    read $tmp
+    if test $tmp = "y";
+    then
+        {
+            rm -r $HOME/.vim $HOME/.vimrc
+            echo "Building \".vim\" ..."
+            ln -s $(pwd)/.vim/ $HOME/.vim
+            echo "Building \".vimrc\"..."
+            ln -s $(pwd)/.vimrc $HOME/.vimrc
+        }
+    else
+        echo "Nothing I can do."
+    fi
+}
+
+# MAIN install function
+function install
+{
+    remove_pre
+
+    echo "We need to install vundle first..."
+    echo "Install vundle..."
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    echo "Now install others, press Enter to continue..."
+    read 
+    vim -c PluginInstall
+
+    install_fonts
+}
+
+# function to uninstall, but leave original files. 
+function uninstall
+{
+    echo "This will remove your config, continue? (y/n)"
+    read $temp
+    if [ "$temp" == "y" ];
+    then
+        {
+            rm $HOME/.vim
+            rm $HOME/.vimrc
+            echo "Uninstalled. You need to remove the original files YOURSELF."
+        }
+    else
+        echo "Stopped."
+    fi
+}
+
+# mkdir a new direct, my_vim_fonts
+function install_fonts
+{
+    echo "Install fonts?"
+    echo "Waring: It's not support some OS: like CentOS."
+    read tmp
+    if test $tmp = "y"
+    then
+        {
+            read tmp
+            sudo mkdir -p /usr/share/fonts/my_vim_fonts
+            sudo cp user_fonts/*.ttf /usr/share/fonts/my_vim_fonts
+            sudo cd /usr/share/fonts/my_vim_fonts_
+            sudo mkfontscale
+            sudo mkfontsdir
+        }
+    fi
+    echo "Install finished."
+    echo "Press any key to continue..."
+}
+
+# build link
+function link
+{
+    ln -s $(pwd)/.vimrc $HOME/.vimrc
+    ln -s $(pwd)/.vim $HOME/.vim
+
+    echo "done."
+}
+
+#help
+function help
+{
+    echo "command: ";
+    echo "install            --to install"
+    echo "uninstall          --uninstall "
+    echo "link               --rebuild link"
+    echo "install_fonts      --install the fonts"
+    echo "remove_pre         --remove pre config"
+}
 
 
-echo "It will remove your pre-config, continue or not(y/n)?"
-read tmp
-if test $tmp = "y"
+if [ -z "$1" ] ;
 then
-    {
-        rm -r $HOME/.vim
-        rm $HOME/.vimrc
-        echo "Building \".vim\" ..."
-        ln -s $(pwd)/.vim/ $HOME/.vim
-        echo "Building \".vimrc\"..."
-        ln -s $(pwd)/.vimrc $HOME/.vimrc
-        echo "Now install vundle"
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-        echo "Install fonts?"
-        read tmp
-        if test $tmp = "y"
-        then
-            {
-                bash install_fonts
-            }
-        fi
-        echo "Install finished."
-    }
+    install
 else
-    echo "Nothing I can do."
+    $1
 fi
+
+unset -f install
+unset -f install_fonts
+unset -f judge_OS
+unset -f link
+unset -f remove_pre
+unset -f uninstall
+
