@@ -2,8 +2,9 @@ MyVimrc
 ===
 
 - 本vimrc用于备份我的vimrc，也是为了通用型。
-- [task](#task)
+- [Task](#task)
 - 包含大量的来自vim-scripts的插件
+- 因为我的个人习惯会经常改动，所以想要更新朋友要做好准备，不要随便的git pull
 
 运行截图 Running Image
 ---
@@ -57,5 +58,8 @@ sudo bash install
 
 Task
 ---
+
 - [ ] add task.vim
 - [x] use gdb
+- [ ] 对过于特殊的配置进行重构
+
