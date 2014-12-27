@@ -2,7 +2,8 @@ MyVimrc
 ===
 
 - 本vimrc用于备份我的vimrc，也是为了通用型。
-- [Task](#task)
+- [Task当前的任务](#task)
+- [所用的插件, 来自github](#plugin)
 - 包含大量的来自vim-scripts的插件
 - 因为我的个人习惯会经常改动，所以想要更新朋友要做好准备，不要随便的git pull
 
@@ -13,9 +14,8 @@ MyVimrc
 运行环境 Environment
 ---
 
-- gvim or vim, git
-- 特别的，如果你的环境是Ubuntu，直接使用:
-- `sudo apt-get gvim git`即可
+- gvim or vim, git 是必须的
+- 特别的，如果你的环境是Ubuntu，直接使用: `sudo apt-get gvim git`即可
 
 
 安装 Install
@@ -63,3 +63,63 @@ Task
 - [x] use gdb
 - [ ] 对过于特殊的配置进行重构
 
+Plugin
+---
+
+    Bundle 'gmarik/vundle'
+    Bundle 'a.vim'
+    Bundle 'Align'
+    Bundle 'jiangmiao/auto-pairs'
+    Bundle 'jlanzarotta/bufexplorer'
+    Bundle 'ccvext.vim'
+    Bundle 'cSyntaxAfter'
+    Bundle 'Yggdroot/indentLine'
+    Bundle 'Mark--Karkat'
+    Bundle 'Shougo/neocomplcache.vim'
+    Bundle 'scrooloose/nerdcommenter'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'OmniCppComplete'
+    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'repeat.vim'
+    Bundle 'msanders/snipmate.vim'
+    Bundle 'wesleyche/SrcExpl'
+    Bundle 'std_c.zip'
+    Bundle 'tpope/vim-surround'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'majutsushi/tagbar'
+    Bundle 'taglist.vim'
+    Bundle 'TxtBrowser'
+    Bundle 'ZoomWin'
+    Bundle 'godlygeek/tabular'
+    Bundle 'vimwiki/vimwiki'
+    Plugin 'plasticboy/vim-markdown'
+    
+    " ---Java
+    Bundle 'vim-scripts/javacomplete'
+    Bundle 'vim-scripts/javaDoc.vim'
+    
+    " Bundle 'vim-scripts/Java-Syntax-und-Folding'
+    " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
+    
+    " ---Python
+    Bundle 'klen/python-mode'
+    Bundle 'vimGTD'
+    
+    " ---php
+    Bundle 'arnaud-lb/vim-php-namespace'
+    Plugin 'shawncplus/phpcomplete.vim'
+    
+    " ---org
+    Bundle 'tpope/vim-speeddating'
+    
+    " ---LargeFile
+    Bundle 'vim-scripts/LargeFile'
+    
+    " ---ibus support
+    " Bundle 'bouzuya/vim-ibus'
+    
+    
+    " ctrlp
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'tacahiroy/ctrlp-funky'
+    
