@@ -66,6 +66,9 @@ augroup END
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
+
+
+
 " -----------------------------------------------------------------------------
 " 快捷键设定:
 " -----------------------------------------------------------------------------
@@ -82,6 +85,9 @@ iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 " ----------------------------------------------------------------------------
 " 任何时候都是使用*noremap的形式，以非递归形式
 
+" map
+map j gj
+map k gk
 
 " normal, 多用,作为开始
 " 全选
@@ -135,11 +141,14 @@ nnoremap cM :%s/\r$//g<CR>:noh<CR>
 inoremap <Esc> <nop>
 inoremap ii <ESC>
 
-" Movement
+" Movement:
 " 编辑函数参数
 onoremap in( :<c-u>normal! f(vi(<cr>
 
 "  end
+
+
+
 
 " -----------------------------------------------------------------------------
 "  < 判断是终端还是 Gvim >
@@ -149,6 +158,9 @@ if has("gui_running")
 else
     let g:isGUI = 0
 endif
+
+
+
 
 " =============================================================================
 "                          << 以下为软件默认配置 >>
@@ -354,6 +366,7 @@ endif
 filetype on                                           "启用文件类型侦测
 filetype plugin on                                    "针对不同的文件类型加载对应的插件
 filetype plugin indent on                             "启用缩进
+
 set smartindent                                       "启用智能对齐方式
 set expandtab                                         "将Tab键转换为空格
 set tabstop=4                                         "设置Tab键的宽度
@@ -657,6 +670,14 @@ set nobackup                                "设置无备份文件
 " set noswapfile                              "设置无临时文件
 set vb t_vb=                                "关闭提示音
 
+set history=700
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+" Turn on the WiLd menu
+set wildmenu
 
 " =============================================================================
 "                          << 以下为常用插件配置 >>
