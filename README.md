@@ -26,15 +26,19 @@ MyVimrc
 ```bash 
 cd 你想要的目录/
 git clone https://github.com/Svtter/MyVimrc
-sudo bash install
+bash install
 ```
 
 此外，还有更多的选项，可以通过`bash install help`查看
 
 ####Windows
 
-- 首先你需要安装`git`这个工具
-- 不安也行，下载右边的zip也行
+```
+cd 你想要的目录/
+git clone https://github.com/Svtter/MyVimrc
+bash install
+```
+
 
 然后剩下的复制粘贴吧，有时间我再写。
 不过最简单的解决方案就是转移到Linux。
