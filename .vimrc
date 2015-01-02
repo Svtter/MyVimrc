@@ -760,7 +760,6 @@ let NERDTreeIgnore=['\.pyc'] " 忽略pyc文件
 " 所以我就将--c++-kinds=+p参数给去掉了，如果大侠有什么其它解决方法希望不要保留呀
 
 set completeopt=menu                        "关闭预览窗口
-setlocal omnifunc=javacomplete#Complete
 
 
 " -----------------------------------------------------------------------------
@@ -772,10 +771,13 @@ setlocal omnifunc=javacomplete#Complete
 " Java compelte
 " -----------------------------------------------------------------------------
 "
-" autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
-" inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
-" inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
-" autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
+setlocal omnifunc=javacomplete#Complete
+augroup Java
+    autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
+    autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
+    inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
+    " inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
+augroup END
 "
 " -----------------------------------------------------------------------------
 
