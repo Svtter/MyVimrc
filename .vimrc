@@ -1,21 +1,11 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-"
-"
-"
 " Author:
 "       svtter
 "       svtter.com
 "
 " Version:
 "       v1.0
-"
-"
-"
-"
-"
-"
-"
 "
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,76 +68,6 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " ----------------------------------------------------------------------------
 iabbrev @@ svtter@qq.com
 iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
-
-
-" ----------------------------------------------------------------------------
-"  map设置
-" ----------------------------------------------------------------------------
-" 任何时候都是使用*noremap的形式，以非递归形式
-
-" map
-map j gj
-map k gk
-
-" normal, 多用,作为开始
-" 全选
-nnoremap ,, ggVG
-
-nnoremap H 0
-nnoremap L $
-
-" 分屏设置
-nnoremap ,v :vs %<CR>
-nnoremap ,s :sp %<CR>
-nnoremap ,w :w<CR>
-nnoremap ,q :q<CR>
-
-" 快速添加成对
-nnoremap ," viw<esc>a"<esc>hbi"<esc>lel
-nnoremap ,' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap ,( viw<esc>a)<esc>hbi(<esc>lel
-nnoremap ,[ viw<esc>a]<esc>hbi[<esc>lel
-nnoremap ,o i<CR><Esc>
-
-" 括号
-nnoremap ,cc %
-nnoremap ,cr d%
-nnoremap ,rl :so %<CR>
-
-" 快速编辑vimrc
-nnoremap ,e :e $MYVIMRC<CR>
-
-" 快速编辑blog
-nnoremap ,b :e /home/svitter/svtter.github.io/source/_posts/<CR>
-nnoremap ,d :NERDTreeToggle<CR>
-
-" 用于缓存区的快速切换, t键
-nnoremap tj :bn<CR>
-nnoremap tk :bp<CR>
-nnoremap tn :tabnew<CR>
-nnoremap tc :Toc<CR>
-
-" 生成tags
-noremap <F3> :execute '!ctags -R *'<CR>
-
-" 常规模式下输入 cS 清除行尾空格
-nnoremap cS :%s/\s\+$//g<CR>:noh<CR>
-
-" 常规模式下输入 cM 清除行尾 ^M 符号
-nnoremap cM :%s/\r$//g<CR>:noh<CR>
-
-
-" 强迫不可用模式
-inoremap <Esc> <nop>
-inoremap ii <ESC>
-
-" Movement:
-" 编辑函数参数
-onoremap in( :<c-u>normal! f(vi(<cr>
-
-"  end
-
-
 
 
 " -----------------------------------------------------------------------------
@@ -257,10 +177,10 @@ filetype off                                          "禁用文件类型侦测
 
 if g:islinux
     set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    call vundle#begin()
 else
     set rtp+=$VIM/vimfiles/bundle/vundle/
-    call vundle#rc('$VIM/vimfiles/bundle/')
+    call vundle#begin('$VIM/vimfiles/bundle/')
 endif
 
 " 使用Vundle来管理Vundle，这个必须要有。
@@ -322,21 +242,27 @@ Plugin 'shawncplus/phpcomplete.vim'
 
 " ---org
 Bundle 'tpope/vim-speeddating'
+Bundle 'mattn/calendar-vim'
+Bundle 'jceb/vim-orgmode'
 
 " Bundle 'vim-scripts/utl.vim'     "use :so %
-" Bundle 'vim-orgMode'             "use :so %
 " Bundle 'vim-scripts/calendar.vim'
 
 " ---LargeFile
 Bundle 'vim-scripts/LargeFile'
 
-" ---ibus support
-" Bundle 'bouzuya/vim-ibus'
+" shell
+Bundle 'oplatek/Conque-shell'
 
+" chinese doc
+Plugin 'asins/vimcdoc'
 
 " ctrlp
 Bundle 'kien/ctrlp.vim'
 Bundle 'tacahiroy/ctrlp-funky'
+Bundle 'Svtter/map.vim'
+
+call vundle#end()
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >

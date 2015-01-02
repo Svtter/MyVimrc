@@ -11,7 +11,7 @@ function judge_OS
 function remove_pre
 {
     echo "It will remove your pre-config, continue or not(y/n)?"
-    read $tmp
+    read tmp
     if test $tmp = "y";
     then
         {
@@ -45,7 +45,7 @@ function install
 function uninstall
 {
     echo "This will remove your config, continue? (y/n)"
-    read $temp
+    read temp
     if [ "$temp" == "y" ];
     then
         {
