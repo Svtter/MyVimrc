@@ -33,11 +33,7 @@ bash install
 
 ####Windows
 
-```
-cd 你想要的目录/
-git clone https://github.com/Svtter/MyVimrc
-bash install
-```
+- 尚未书写自动化的安装方法
 
 一般的问题 FAQ
 ---
