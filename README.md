@@ -39,11 +39,6 @@ git clone https://github.com/Svtter/MyVimrc
 bash install
 ```
 
-
-然后剩下的复制粘贴吧，有时间我再写。
-不过最简单的解决方案就是转移到Linux。
-不爽你就咬我啊。
-
 一般的问题 FAQ
 ---
 
@@ -70,60 +65,4 @@ Task
 Plugin
 ---
 
-    Bundle 'gmarik/vundle'
-    Bundle 'a.vim'
-    Bundle 'Align'
-    Bundle 'jiangmiao/auto-pairs'
-    Bundle 'jlanzarotta/bufexplorer'
-    Bundle 'ccvext.vim'
-    Bundle 'cSyntaxAfter'
-    Bundle 'Yggdroot/indentLine'
-    Bundle 'Mark--Karkat'
-    Bundle 'Shougo/neocomplcache.vim'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'OmniCppComplete'
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'repeat.vim'
-    Bundle 'msanders/snipmate.vim'
-    Bundle 'wesleyche/SrcExpl'
-    Bundle 'std_c.zip'
-    Bundle 'tpope/vim-surround'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'taglist.vim'
-    Bundle 'TxtBrowser'
-    Bundle 'ZoomWin'
-    Bundle 'godlygeek/tabular'
-    Bundle 'vimwiki/vimwiki'
-    Plugin 'plasticboy/vim-markdown'
-    
-    " ---Java
-    Bundle 'vim-scripts/javacomplete'
-    Bundle 'vim-scripts/javaDoc.vim'
-    
-    " Bundle 'vim-scripts/Java-Syntax-und-Folding'
-    " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
-    
-    " ---Python
-    Bundle 'klen/python-mode'
-    Bundle 'vimGTD'
-    
-    " ---php
-    Bundle 'arnaud-lb/vim-php-namespace'
-    Plugin 'shawncplus/phpcomplete.vim'
-    
-    " ---org
-    Bundle 'tpope/vim-speeddating'
-    
-    " ---LargeFile
-    Bundle 'vim-scripts/LargeFile'
-    
-    " ---ibus support
-    " Bundle 'bouzuya/vim-ibus'
-    
-    
-    " ctrlp
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'tacahiroy/ctrlp-funky'
-    
+Plugin方面可以打开vimrc自己选择
