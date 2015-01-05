@@ -29,17 +29,19 @@ else
 endif
 
 
-" -----------------------------------------------------------------------------
-"  我所添加的配置
-" -----------------------------------------------------------------------------
-if exists("~/workspace")
-    cd ~/workspace/ " 工作目录
+
+
+" =============================================================================
+"                          << 以下为常用自动命令配置 >>
+" =============================================================================
+
+" 启动时进入工作目录
+if exists("~/workspace/")
+    cd ~/workspace/ 
 endif
 
-
-" -----------------------------------------------------------------------------
-" autocmd
-" -----------------------------------------------------------------------------
+" 自动切换目录为当前编辑文件所在目录
+autocmd BufRead,BufNewFile,BufEnter * cd %:p:h
 
 " ACM:
 augroup ACM
@@ -56,12 +58,6 @@ augroup END
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
-
-
-
-" -----------------------------------------------------------------------------
-" 快捷键设定:
-" -----------------------------------------------------------------------------
 
 " ----------------------------------------------------------------------------
 " Abbreviations设置:
@@ -160,6 +156,17 @@ if g:islinux
 endif
 
 
+
+
+
+
+
+
+
+
+
+
+
 " =============================================================================
 "                          << 以下为用户自定义配置 >>
 " =============================================================================
@@ -193,7 +200,11 @@ Bundle 'a.vim'
 Bundle 'Align'
 
 " 括号自动补全全 与 ibus+CentOS 冲突
-" Bundle 'jiangmiao/auto-pairs'
+Bundle 'jiangmiao/auto-pairs'
+
+" Edit
+Bundle 'junegunn/vim-easy-align'
+Bundle 'Lokaltog/vim-easymotion'
 
 "
 Bundle 'jlanzarotta/bufexplorer'
@@ -205,7 +216,7 @@ Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'OmniCppComplete'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wesleyche/SrcExpl'
@@ -219,7 +230,6 @@ Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
 Bundle 'vimwiki/vimwiki'
 
-" Bundle 'ervandew/supertab'                "有时与 snipmate 插件冲突
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
 
 " ---用于markdown的着色
@@ -244,6 +254,9 @@ Plugin 'shawncplus/phpcomplete.vim'
 Bundle 'tpope/vim-speeddating'
 Bundle 'mattn/calendar-vim'
 Bundle 'jceb/vim-orgmode'
+Bundle 'utl.vim'
+Bundle 'SyntaxRange'
+Bundle 'chrisbra/NrrwRgn'
 
 " Bundle 'vim-scripts/utl.vim'     "use :so %
 " Bundle 'vim-scripts/calendar.vim'
@@ -261,6 +274,17 @@ Plugin 'asins/vimcdoc'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'Svtter/map.vim'
+
+" hexo
+Bundle 'Svtter/hexoblog.vim'
+
+" color
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/rainbow_parentheses.vim'
+
+" for Git
+Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -327,7 +351,7 @@ inoremap <c-e> <End>
 
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
-au! BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 90 . 'v.\+', -1)
+autocmd! BufWinEnter * let w:m2=matchadd('Underlined', '\%>' . 90 . 'v.\+', -1)
 
 " -----------------------------------------------------------------------------
 "  < 界面配置 >
@@ -336,7 +360,8 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ Bold\ 11               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
+" set guifont=Inconsolata\ Bold\ 11               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -352,12 +377,16 @@ endif
 
 " 设置代码配色方案
 if g:isGUI
+    set background=dark
+    " colorscheme solarized
     colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright
     " colorscheme Tomorrow-Night
     " colorscheme darkburn
     " color evening
 else
+    set background=dark
+    " colorscheme solarized
     colorscheme Tomorrow-Night-Eighties               "终端配色方案
     " colorscheme Tomorrow-Night-Brigfht
     " colorscheme Tomorrow-Night
@@ -582,9 +611,9 @@ endfunc
 func! RunPy()
     exec 'w'
     if expand("%:e") == "md"
-        exe "!blog -g"
+        execute "!blog -g"
     else
-        exe ":!gnome-terminal -x bash -c 'make; echo; echo 请按 Enter 键继续; read'"
+        execute  ":!gnome-terminal -x bash -c 'make; echo; echo 请按 Enter 键继续; read'"
     endif
 endfunc
 
@@ -744,6 +773,7 @@ let NERDSpaceDelims = 1                     "在左注释符之后，右注释�
 " 有目录村结构的文件浏览插件
 " 常规模式下输入 F2 调用插件
 " nnoremap <F2> : e $MYVIMRC<CR>
+" 另外，在map.vim中定义了`,d`这种形式
 "
 nnoremap <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc'] " 忽略pyc文件 
@@ -763,22 +793,24 @@ set completeopt=menu                        "关闭预览窗口
 
 
 " -----------------------------------------------------------------------------
-"  < powerline 插件配置 >
+"  < airline插件配置 >
 " -----------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 
 " -----------------------------------------------------------------------------
 " Java compelte
 " -----------------------------------------------------------------------------
 "
-setlocal omnifunc=javacomplete#Complete
 augroup Java
-    autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
-    autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
-    inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
+    autocmd FileType java set omnifunc=javacomplete#Complete
+    " autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
+    autocmd FileType java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
     " inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
 augroup END
 "
+inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 " -----------------------------------------------------------------------------
 
 
@@ -803,6 +835,7 @@ augroup END
 "
 " execute pathogen#infect()
 let g:pymode_python = 'python'
+let g:syntastic_java_javac_config_file_enabled = 1
 
 
 " -----------------------------------------------------------------------------
@@ -893,6 +926,8 @@ let Tlist_Use_Right_Window=1                "在右侧窗口中显示
 " 用于文本文件生成标签与与语法高亮（调用TagList插件生成标签，如果可以）
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
+
+
 " -----------------------------------------------------------------------------
 " 设置ctrlp
 " -----------------------------------------------------------------------------
@@ -908,6 +943,25 @@ let g:ctrlp_extensions = ['funky']
 " -----------------------------------------------------------------------------
 " 用于分割窗口的最大化与还原
 " 常规模式下按快捷键 <c-w>o 在最大化与还原间切换
+
+
+" -----------------------------------------------------------------------------
+"  < hexoblog 插件配置 >
+" -----------------------------------------------------------------------------
+
+let g:hexo_blogpath = "/home/svitter/svtter.github.io"
+
+
+
+
+
+
+
+
+
+
+
+
 
 " =============================================================================
 "                          << 以下为常用工具配置 >>
@@ -967,21 +1021,21 @@ endif
 if (g:iswindows && g:isGUI)
     let g:Current_Alpha = 255
     let g:Top_Most = 0
-    func! Alpha_add()
+    function! Alpha_add()
         let g:Current_Alpha = g:Current_Alpha + 10
         if g:Current_Alpha > 255
             let g:Current_Alpha = 255
         endif
         call libcallnr("vimtweak.dll","SetAlpha",g:Current_Alpha)
-    endfunc
-    func! Alpha_sub()
+    endfunction
+    function! Alpha_sub()
         let g:Current_Alpha = g:Current_Alpha - 10
         if g:Current_Alpha < 155
             let g:Current_Alpha = 155
         endif
         call libcallnr("vimtweak.dll","SetAlpha",g:Current_Alpha)
-    endfunc
-    func! Top_window()
+    endfunction
+    function! Top_window()
         if  g:Top_Most == 0
             call libcallnr("vimtweak.dll","EnableTopMost",1)
             let g:Top_Most = 1
@@ -989,7 +1043,7 @@ if (g:iswindows && g:isGUI)
             call libcallnr("vimtweak.dll","EnableTopMost",0)
             let g:Top_Most = 0
         endif
-    endfunc
+    endfunction
 
     "快捷键设置
     noremap <c-up> :call Alpha_add()<CR>
@@ -997,14 +1051,17 @@ if (g:iswindows && g:isGUI)
     noremap <leader>t :call Top_window()<CR>
 endif
 
-" =============================================================================
 
 
-"                          << 以下为常用自动命令配置 >>
-" =============================================================================
 
-" 自动切换目录为当前编辑文件所在目录
-au BufRead,BufNewFile,BufEnter * cd %:p:h
+
+
+
+
+
+
+
+
 
 " =============================================================================
 "                     << windows 下解决 Quickfix 乱码问题 >>
