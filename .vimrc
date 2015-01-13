@@ -37,7 +37,7 @@ endif
 
 " 启动时进入工作目录
 if exists("~/workspace/")
-    cd ~/workspace/ 
+    cd ~/workspace/
 endif
 
 " 自动切换目录为当前编辑文件所在目录
@@ -64,6 +64,7 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " ----------------------------------------------------------------------------
 iabbrev @@ svtter@qq.com
 iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
+iabbrev time@ `call append(6,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))`
 
 
 " -----------------------------------------------------------------------------
@@ -205,17 +206,19 @@ Bundle 'jiangmiao/auto-pairs'
 " Edit
 Bundle 'junegunn/vim-easy-align'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'terryma/vim-multiple-cursors'
 
+" complete
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'OmniCppComplete'
 "
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'Yggdroot/indentLine'
 Bundle 'Mark--Karkat'
-Bundle 'Shougo/neocomplcache.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'OmniCppComplete'
 Bundle 'bling/vim-airline'
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
@@ -224,8 +227,8 @@ Bundle 'std_c.zip'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
-Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
+Bundle 'taglist.vim'
 Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
 Bundle 'vimwiki/vimwiki'
@@ -283,8 +286,8 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/rainbow_parentheses.vim'
 
 " for Git
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+" Bundle 'tpope/vim-fugitive'
+" Bundle 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -327,8 +330,6 @@ set foldmethod=indent                                 "indent 折叠方式
 " set foldmethod=marker                                "marker 折叠方式
 syntax on
 
-" 用空格键来开关折叠
-" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " 当文件在外部被修改，自动更新该文件
 set autoread
@@ -360,8 +361,8 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
-" set guifont=Inconsolata\ Bold\ 11               "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ Book\ 12              "设置字体:字号（字体名称空格用下划线代替）
+" set guifont=Inconsolata\ Bold\ 12               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -627,7 +628,7 @@ set vb t_vb=                                "关闭提示音
 
 set history=700
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
@@ -776,7 +777,7 @@ let NERDSpaceDelims = 1                     "在左注释符之后，右注释�
 " 另外，在map.vim中定义了`,d`这种形式
 "
 nnoremap <F2> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.pyc'] " 忽略pyc文件 
+let NERDTreeIgnore=['\.pyc'] " 忽略pyc文件
 
 
 " -----------------------------------------------------------------------------
@@ -797,7 +798,10 @@ set completeopt=menu                        "关闭预览窗口
 " -----------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " -----------------------------------------------------------------------------
 " Java compelte
@@ -905,18 +909,29 @@ let g:tagbar_width=30                       "设置窗口宽度
 " -----------------------------------------------------------------------------
 "  < TagList 插件配置 >
 " -----------------------------------------------------------------------------
+
 " 高效地浏览源码, 其功能就像vc中的workpace
 " 那里面列出了当前文件中的所有宏,全局变量, 函数名等
 
 " 常规模式下输入 tl 调用插件，如果有打开 Tagbar 窗口则先将其关闭
 nnoremap tl :TagbarClose<CR>:Tlist<CR>
 
-let Tlist_Show_One_File=1                   "只显示当前文件的tags
-" let Tlist_Enable_Fold_Column=0              "使taglist插件不显示左边的折叠行
-let Tlist_Exit_OnlyWindow=1                 "如果Taglist窗口是最后一个窗口则退出Vim
-let Tlist_File_Fold_Auto_Close=1            "自动折叠
-let Tlist_WinWidth=30                       "设置窗口宽度
-let Tlist_Use_Right_Window=1                "在右侧窗口中显示
+let Tlist_Show_One_File=1
+" let Tlist_Enable_Fold_Column=0
+let Tlist_Exit_OnlyWindow=1
+let Tlist_File_Fold_Auto_Close=1
+let Tlist_WinWidth=30
+let Tlist_Use_Right_Window=1
+
+
+
+
+
+
+
+
+
+
 
 
 
