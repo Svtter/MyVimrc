@@ -77,6 +77,7 @@ else
 endif
 
 
+let mapleader = ","
 
 
 " =============================================================================
@@ -233,7 +234,13 @@ Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
 Bundle 'vimwiki/vimwiki'
 
+" Js check
+Bundle 'Shutnik/jshint2.vim'
+
 " Bundle 'fholgado/minibufexpl.vim'         "好像与 Vundle 插件有一些冲突
+
+" 最近使用
+Bundle 'mru.vim'
 
 " ---用于markdown的着色
 Plugin 'plasticboy/vim-markdown'
@@ -272,6 +279,10 @@ Bundle 'oplatek/Conque-shell'
 
 " chinese doc
 Plugin 'asins/vimcdoc'
+
+" W3m
+Bundle 'yuratomo/w3m.vim'
+
 
 " ctrlp
 Bundle 'kien/ctrlp.vim'
@@ -339,16 +350,6 @@ set ignorecase                                        "搜索模式里忽略大�
 set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
 " set noincsearch                                       "在输入要搜索的文字时，取消实时匹配
 
-" 插入模式下光标上下左右
-inoremap <c-k> <Up>
-inoremap <c-j> <Down>
-
-
-" Ctrl + B 插入模式下使用Home
-" Ctrl + E 插入模式下使用End
-" 暂时使用本义
-inoremap <c-b> <Home>
-inoremap <c-e> <End>
 
 
 " 启用每行超过80列的字符提示（字体变蓝并加下划线），不启用就注释掉
@@ -361,7 +362,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ Book\ 12              "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ Bold\ 12              "设置字体:字号（字体名称空格用下划线代替）
 " set guifont=Inconsolata\ Bold\ 12               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
@@ -380,17 +381,17 @@ endif
 if g:isGUI
     set background=dark
     " colorscheme solarized
-    colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright
-    " colorscheme Tomorrow-Night
+    colorscheme Tomorrow-Night
     " colorscheme darkburn
     " color evening
 else
     set background=dark
     " colorscheme solarized
-    colorscheme Tomorrow-Night-Eighties               "终端配色方案
+    " colorscheme Tomorrow-Night-Eighties               "终端配色方案
     " colorscheme Tomorrow-Night-Brigfht
-    " colorscheme Tomorrow-Night
+    colorscheme Tomorrow-Night
     " colorscheme darkburn
     " color evening
 endif
@@ -840,7 +841,8 @@ inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 " execute pathogen#infect()
 let g:pymode_python = 'python'
 let g:syntastic_java_javac_config_file_enabled = 1
-
+" C header
+let g:syntastic_c_check_header = 1
 
 " -----------------------------------------------------------------------------
 " < 作者名 插入设置>
