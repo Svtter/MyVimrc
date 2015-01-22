@@ -3,7 +3,7 @@
 #include <math.h>
 
 // 大数，内存处理
-#define INF 0x3f3f3f3f
+const int INF = 0x3f3f3f3f;
 #define ll long long int
 #define MEM(a) memset(a, 0, sizeof(a))
 #define MEMM(a) memset(b, -1, sizeof(b))
