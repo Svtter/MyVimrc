@@ -7,13 +7,12 @@
 #define ll long long int
 #define MEM(a) memset(a, 0, sizeof(a))
 #define MEMM(a) memset(b, -1, sizeof(b))
-#define DEB(x, n) cout << (x) << " " << (n) << endl;
 
 
 int main()
 {
 #ifdef DEBUG
-    freopen("input", 'r', stdin);
+    freopen("input", "r", stdin);
 #endif
 
     int i, j, k;
