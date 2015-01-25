@@ -28,6 +28,14 @@ else
     let g:islinux = 1
 endif
 
+" -----------------------------------------------------------------------------
+"  < 判断是终端还是 Gvim >
+" -----------------------------------------------------------------------------
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
 
 
 
@@ -67,16 +75,8 @@ iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 iabbrev time@ `call append(6,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))`
 
 
-" -----------------------------------------------------------------------------
-"  < 判断是终端还是 Gvim >
-" -----------------------------------------------------------------------------
-if has("gui_running")
-    let g:isGUI = 1
-else
-    let g:isGUI = 0
-endif
 
-
+" 设置mapleader
 let mapleader = ","
 
 
@@ -450,8 +450,8 @@ let s:Sou_Error = 0
 let s:windows_CFlags = 'gcc\ -fexec-charset=gbk\ -Wall\ -g\ -lm\ -O0\ -c\ %\ -o\ %<.o'
 let s:linux_CFlags = 'gcc\ -Wall\ -g\ -lm\ -O0\ -c\ %\ -o\ %<.o'
 
-let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
-let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
+let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -DDEBUG\ -g\ -O0\ -c\ %\ -o\ %<.o'
+let s:linux_CPPFlags = 'g++\ -Wall\ -DDEBUG\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
 func! Compile()
     exe ":ccl"

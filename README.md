@@ -40,6 +40,8 @@ bash install
 
 1. 如果出现插件不识别的情况重新安装以下vundle 
     或者打开.vimrc使用:PluginInstall命令
+2. 字体出现乱码的情况：
+    参见airline的FAQ，主要是ariline的字体没有安装导致.
 
 功能 Function
 ---
