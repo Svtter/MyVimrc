@@ -15,6 +15,7 @@ const int INF = 0x3f3f3f3f;
 #define MEM(a) memset(a, 0, sizeof(a))
 #define MEMM(a) memset(b, -1, sizeof(b))
 #define DEB(x, n) cout << (x) << " " << (n) << endl;
+#define putCR printf("\n")
 
 
 int main()
