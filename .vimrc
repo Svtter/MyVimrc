@@ -51,16 +51,7 @@ endif
 " 自动切换目录为当前编辑文件所在目录
 autocmd BufRead,BufNewFile,BufEnter * cd %:p:h
 
-" ACM:
-augroup ACM
-    " 清空之前的配置
-    autocmd!
-    autocmd BufNewFile ACM_*.cpp 0r ~/.vim/template/cpp/ACM_config.cpp   " ACM C++模板
-    autocmd BufNewFile ACM_*.c 0r ~/.vim/template/cpp/ACM_config.c       " ACM C模板
-    " 保存自动整理代码
-    " autocmd BufWritePre *.cpp :normal gg=G
-    " autocmd BufWritePre *.c :normal gg=G
-augroup END
+
 
 " Python:
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
@@ -72,7 +63,7 @@ autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " ----------------------------------------------------------------------------
 iabbrev @@ svtter@qq.com
 iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
-iabbrev time@ `call append(6,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))`
+" iabbrev time@ `call append(strftime("%Y-%m-%d %H:%M"))`
 
 
 
@@ -202,7 +193,7 @@ Bundle 'a.vim'
 Bundle 'Align'
 
 " 括号自动补全全 与 ibus+CentOS 冲突
-Bundle 'jiangmiao/auto-pairs'
+" Bundle 'jiangmiao/auto-pairs'
 
 " Edit
 Bundle 'junegunn/vim-easy-align'
@@ -295,7 +286,7 @@ Bundle 'Svtter/hexoblog.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/rainbow_parentheses.vim'
 
-Bundle 'Svtter/ACM.vim'
+Plugin 'Svtter/ACM.vim'
 
 " for Git
 " Bundle 'tpope/vim-fugitive'
