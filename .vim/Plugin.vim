@@ -106,3 +106,5 @@ Plugin 'Svtter/ACM.vim'
 " for Git
 " Bundle 'tpope/vim-fugitive'
 " Bundle 'airblade/vim-gitgutter'
+
+Plugin 'tomasr/molokai'

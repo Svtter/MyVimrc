@@ -7,7 +7,6 @@
 " Version:
 "       v1.0
 "
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -231,6 +230,8 @@ syntax on
 " 当文件在外部被修改，自动更新该文件
 set autoread
 
+" 括号的匹配提示
+set sm
 
 set ignorecase                                        "搜索模式里忽略大小写
 set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
@@ -267,6 +268,7 @@ endif
 if g:isGUI
     set background=dark
     colorscheme solarized
+    " colorscheme molokai
     " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright
     " colorscheme Tomorrow-Night
@@ -465,6 +467,7 @@ let g:neocomplcache_enable_at_startup = 1     "vim 启动时启用插件
 " let g:neocomplcache_disable_auto_complete = 1 "不自动弹出补全列表
 " 在弹出补全列表后用 <c-p> 或 <c-n> 进行上下选择效果比较好
 
+
 " -----------------------------------------------------------------------------
 "  < nerdcommenter 插件配置 >
 " -----------------------------------------------------------------------------
@@ -522,6 +525,8 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
+
+
 " -----------------------------------------------------------------------------
 " Java compelte
 " -----------------------------------------------------------------------------
@@ -535,6 +540,7 @@ augroup END
 "
 inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 " -----------------------------------------------------------------------------
+
 
 
 " -----------------------------------------------------------------------------
@@ -551,6 +557,7 @@ inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 "my $str = *whee!;        vllllS'     my $str = 'whee!';
 
 
+
 " -----------------------------------------------------------------------------
 "  < Syntastic 插件配置 >
 " -----------------------------------------------------------------------------
@@ -559,8 +566,10 @@ inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
 " execute pathogen#infect()
 let g:pymode_python = 'python'
 let g:syntastic_java_javac_config_file_enabled = 1
+
 " C header
 let g:syntastic_c_check_header = 1
+
 
 
 " -----------------------------------------------------------------------------
@@ -684,12 +693,14 @@ if has("cscope")
     nnoremap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 endif
 
+
 " -----------------------------------------------------------------------------
 "  < ctags 工具配置 >
 " -----------------------------------------------------------------------------
 " 对浏览代码非常的方便,可以在函数,变量之间跳转等
 set tags=./tags;                            "向上级目录递归查找tags文件（好像只有在Windows下才有用）
 set autochdir                               "自动选择当前目录
+
 
 " -----------------------------------------------------------------------------
 "  < gvimfullscreen 工具配置 > 请确保已安装了工具
@@ -699,6 +710,9 @@ set autochdir                               "自动选择当前目录
 if (g:iswindows && g:isGUI)
     noremap <F11> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)
 endif
+
+
+
 
 " -----------------------------------------------------------------------------
 "  < vimtweak 工具配置 > 请确保以已装了工具
