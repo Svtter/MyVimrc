@@ -8,7 +8,7 @@ Bundle 'a.vim'
 Bundle 'Align'
 
 " 括号自动补全全 与 ibus+CentOS 冲突
-" Bundle 'jiangmiao/auto-pairs'
+Bundle 'jiangmiao/auto-pairs'
 
 " Edit
 Bundle 'junegunn/vim-easy-align'
