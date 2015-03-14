@@ -1,6 +1,7 @@
 MyVimrc
 ===
 
+- coding.net, 国内可用 http://coding.net/u/svtter/p/vimrc/   
 - 本vimrc用于备份我的vimrc，也是为了通用型。
 - [Task当前的任务](#task)
 - [所用的插件, 来自github](#plugin)
