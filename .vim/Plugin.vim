@@ -2,6 +2,7 @@
 Bundle 'gmarik/vundle'
 
 " 想要更新，使用:PluginInstall
+" :PluginUpdate
 " 嗖嗖的更新！～
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Bundle 'a.vim'
