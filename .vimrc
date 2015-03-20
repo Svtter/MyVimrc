@@ -267,9 +267,9 @@ endif
 " 设置代码配色方案
 if g:isGUI
     set background=dark
-    colorscheme solarized
+    " colorscheme solarized
     " colorscheme molokai
-    " colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
+    colorscheme Tomorrow-Night-Eighties                "Gvim配色方案
     " colorscheme Tomorrow-Night-Bright
     " colorscheme Tomorrow-Night
     " colorscheme darkburn
