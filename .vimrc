@@ -57,7 +57,6 @@ set so=7
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
 
-
 " ----------------------------------------------------------------------------
 " Abbreviations设置:
 " ----------------------------------------------------------------------------
@@ -66,9 +65,9 @@ iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 " iabbrev time@ `call append(strftime("%Y-%m-%d %H:%M"))`
 
 
-
 " 设置mapleader
 let mapleader = ","
+let g:mapleader = ","
 
 
 " =============================================================================
