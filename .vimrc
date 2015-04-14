@@ -50,6 +50,7 @@ endif
 " 自动切换目录为当前编辑文件所在目录
 autocmd BufRead,BufNewFile,BufEnter * cd %:p:h
 
+set so=7
 
 
 " Python:
@@ -249,8 +250,8 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
-" set guifont=Inconsolata\ Bold\ 12               "设置字体:字号（字体名称空格用下划线代替）
+" set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
+set guifont=Inconsolata\ Bold\ 10               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
