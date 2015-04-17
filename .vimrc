@@ -307,27 +307,7 @@ endif
 
 
 
-" <F5> 运行python
-noremap <F5> :call RunPy()<CR>
-inoremap <F5> <ESC>:call RunPy()<CR>
-func! RunPy()
-    exec 'w'
-    if expand("%:e") == "md"
-        execute "!blog -g"
-    else
-        execute  ":!gnome-terminal -x bash -c 'python -i %; echo; echo 请按 Enter 键继续; read'"
-    endif
-endfunc
 
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " -----------------------------------------------------------------------------
 "  < 其它配置 >
@@ -384,7 +364,10 @@ set wildmenu
 " 一个对齐的插件，用来——排版与对齐代码，功能强大，不过用到的机会不多
 "
 
-
+" -----------------------------------------------------------------------------
+" < Powerline 配置 >
+" -----------------------------------------------------------------------------
+let g:Powerline_symbols = 'fancy'
 
 " -----------------------------------------------------------------------------
 "  <vim-markdown 插件配置>

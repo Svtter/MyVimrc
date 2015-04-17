@@ -27,7 +27,12 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'Mark--Karkat'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
+
+" Status Line
 " Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-powerline'
+
+
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wesleyche/SrcExpl'
