@@ -12,9 +12,9 @@ Bundle 'Align'
 Bundle 'jiangmiao/auto-pairs'
 
 " Edit
-Bundle 'junegunn/vim-easy-align'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'junegunn/vim-easy-align'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'terryma/vim-multiple-cursors'
 
 " complete
 Bundle 'Shougo/neocomplcache.vim'
@@ -33,7 +33,7 @@ Bundle 'Mark--Karkat'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 
-" status
+" Status Line
 " Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-powerline'
 
@@ -47,6 +47,8 @@ Bundle 'scrooloose/syntastic'
 
 " 
 Bundle 'majutsushi/tagbar'
+Bundle 'TxtBrowser'
+Bundle 'taglist.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
@@ -69,6 +71,8 @@ Plugin 'plasticboy/vim-markdown'
 "  不是很好用
 " Bundle 'vim-scripts/javacomplete'
 " Bundle 'vim-scripts/javaDoc.vim'
+" Bundle 'vim-scripts/javacomplete'
+" Bundle 'vim-scripts/javaDoc.vim'
 " Bundle 'vim-scripts/Java-Syntax-und-Folding'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
@@ -81,27 +85,27 @@ Bundle 'arnaud-lb/vim-php-namespace'
 Plugin 'shawncplus/phpcomplete.vim'
 
 " ---org
-Bundle 'tpope/vim-speeddating'
-Bundle 'mattn/calendar-vim'
-Bundle 'jceb/vim-orgmode'
-Bundle 'utl.vim'
-Bundle 'SyntaxRange'
-Bundle 'chrisbra/NrrwRgn'
+" Bundle 'tpope/vim-speeddating'
+" Bundle 'mattn/calendar-vim'
+" Bundle 'jceb/vim-orgmode'
+" Bundle 'utl.vim'
+" Bundle 'SyntaxRange'
+" Bundle 'chrisbra/NrrwRgn'
 
 " Bundle 'vim-scripts/utl.vim'     "use :so %
 " Bundle 'vim-scripts/calendar.vim'
 
 " ---LargeFile
-Bundle 'vim-scripts/LargeFile'
+Bundle 'LargeFile'
 
 " shell
-Bundle 'oplatek/Conque-shell'
+" Bundle 'oplatek/Conque-shell'
 
 " chinese doc
 Plugin 'asins/vimcdoc'
 
 " W3m
-Bundle 'yuratomo/w3m.vim'
+" Bundle 'yuratomo/w3m.vim'
 
 " ctrlp
 " Bundle 'kien/ctrlp.vim'

@@ -50,12 +50,12 @@ endif
 " 自动切换目录为当前编辑文件所在目录
 autocmd BufRead,BufNewFile,BufEnter * cd %:p:h
 
+set so=7
 
 
 " Python:
 autocmd BufNewFile *.py 0r ~/.vim/template/python/pythonconfig.py " python模板
 " set mouse-=a    " 禁用鼠标
-
 
 " ----------------------------------------------------------------------------
 " Abbreviations设置:
@@ -65,9 +65,9 @@ iabbrev ssig -- <cr>svtter<cr>svtter@qq.com
 " iabbrev time@ `call append(strftime("%Y-%m-%d %H:%M"))`
 
 
-
 " 设置mapleader
 let mapleader = ","
+let g:mapleader = ","
 
 
 " =============================================================================
@@ -226,6 +226,8 @@ set foldmethod=indent                                 "indent 折叠方式
 " set foldmethod=marker                                "marker 折叠方式
 syntax on
 
+" 
+set lazyredraw
 
 " 当文件在外部被修改，自动更新该文件
 set autoread
@@ -250,7 +252,7 @@ set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
 set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
-" set guifont=Inconsolata\ Bold\ 12               "设置字体:字号（字体名称空格用下划线代替）
+" set guifont=Inconsolata\ Bold\ 10               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
 set cul                                               "高亮当前行
@@ -305,27 +307,21 @@ endif
 
 
 
-" <F5> 运行python
-noremap <F5> :call RunPy()<CR>
-inoremap <F5> <ESC>:call RunPy()<CR>
-func! RunPy()
-    exec 'w'
-    if expand("%:e") == "md"
-        execute "!blog -g"
-    else
-        execute  ":!gnome-terminal -x bash -c 'python -i %; echo; echo 请按 Enter 键继续; read'"
-    endif
-endfunc
-
 
 
 " -----------------------------------------------------------------------------
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
 set writebackup                             "保存文件前建立备份，保存成功后删除该备份
+<<<<<<< HEAD
 " set nobackup                                "设置无备份文件
+=======
+set nobackup                                "设置无备份文件
+>>>>>>> 43ec756dd316b2b9e73aca66d41b4d0c45ec37eb
 set noswapfile                              "设置无临时文件
 set vb t_vb=                                "关闭提示音
+set noerrorbells
+set novisualbell
 
 set history=700
 
@@ -372,7 +368,10 @@ set wildmenu
 " 一个对齐的插件，用来——排版与对齐代码，功能强大，不过用到的机会不多
 "
 
-
+" -----------------------------------------------------------------------------
+" < Powerline 配置 >
+" -----------------------------------------------------------------------------
+let g:Powerline_symbols = 'fancy'
 
 " -----------------------------------------------------------------------------
 "  <vim-markdown 插件配置>
@@ -754,6 +753,17 @@ endif
 
 
 
+
+
+" =============================================================================
+"   一些有用的函數
+" =============================================================================
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
 
 
 
