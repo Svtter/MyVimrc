@@ -7,6 +7,7 @@
 #include <queue>
 #include <cmath>
 #include <bitset>
+#include <cctype>
 using namespace std;
 
 // 大数，内存处理

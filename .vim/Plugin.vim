@@ -19,26 +19,38 @@ Bundle 'terryma/vim-multiple-cursors'
 " complete
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'OmniCppComplete'
+
 "
 Bundle 'jlanzarotta/bufexplorer'
-Bundle 'ccvext.vim'
+Bundle 'Svtter/ccvext.vim'
 Bundle 'cSyntaxAfter'
 Bundle 'Yggdroot/indentLine'
+
+" Easy mark
 Bundle 'Mark--Karkat'
+
+" comment
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
+
+" status
+" Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-powerline'
+
+
 Bundle 'repeat.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'wesleyche/SrcExpl'
 Bundle 'std_c.zip'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
+
+" 
 Bundle 'majutsushi/tagbar'
-Bundle 'TxtBrowser'
-Bundle 'taglist.vim'
-Bundle 'ZoomWin'
 Bundle 'godlygeek/tabular'
+Bundle 'taglist.vim'
+Bundle 'TxtBrowser'
+" Bundle 'ZoomWin'
 Bundle 'vimwiki/vimwiki'
 
 " Js check
@@ -53,9 +65,10 @@ Bundle 'mru.vim'
 Plugin 'plasticboy/vim-markdown'
 
 " ---Java
-Bundle 'vim-scripts/javacomplete'
-Bundle 'vim-scripts/javaDoc.vim'
-
+"  Information:
+"  不是很好用
+" Bundle 'vim-scripts/javacomplete'
+" Bundle 'vim-scripts/javaDoc.vim'
 " Bundle 'vim-scripts/Java-Syntax-und-Folding'
 " Bundle 'vim-javacompleteex'               "更好的 Java 补全插件
 
@@ -91,8 +104,8 @@ Plugin 'asins/vimcdoc'
 Bundle 'yuratomo/w3m.vim'
 
 " ctrlp
-Bundle 'kien/ctrlp.vim'
-Bundle 'tacahiroy/ctrlp-funky'
+" Bundle 'kien/ctrlp.vim'
+" Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'Svtter/map.vim'
 
 " hexo
@@ -105,7 +118,7 @@ Bundle 'kien/rainbow_parentheses.vim'
 Plugin 'Svtter/ACM.vim'
 
 " for Git
-" Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-fugitive'
 " Bundle 'airblade/vim-gitgutter'
 
 Plugin 'tomasr/molokai'

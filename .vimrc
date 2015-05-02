@@ -323,8 +323,8 @@ endfunc
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
 set writebackup                             "保存文件前建立备份，保存成功后删除该备份
-set nobackup                                "设置无备份文件
-" set noswapfile                              "设置无临时文件
+" set nobackup                                "设置无备份文件
+set noswapfile                              "设置无临时文件
 set vb t_vb=                                "关闭提示音
 
 set history=700
@@ -495,8 +495,8 @@ nnoremap <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc'] " 忽略pyc文件
 
 " 如果没有打开文件，自动打开nerdtree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 
