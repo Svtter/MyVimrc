@@ -47,8 +47,6 @@ Bundle 'scrooloose/syntastic'
 
 " 
 Bundle 'majutsushi/tagbar'
-Bundle 'TxtBrowser'
-Bundle 'taglist.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'taglist.vim'
 Bundle 'TxtBrowser'
