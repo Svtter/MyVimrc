@@ -251,7 +251,7 @@ set number                                            "显示行号
 set laststatus=2                                      "启用状态栏信息
 set cmdheight=2                                       "设置命令行的高度为2，默认为1
 set cursorline                                        "突出显示当前行
-set guifont=DejaVu\ Sans\ Mono\ Bold\ 11              "设置字体:字号（字体名称空格用下划线代替）
+set guifont=DejaVu\ Sans\ Mono\ Bold\ 10              "设置字体:字号（字体名称空格用下划线代替）
 " set guifont=Inconsolata\ Bold\ 10               "设置字体:字号（字体名称空格用下划线代替）
 set nowrap                                            "设置不自动换行
 set shortmess=atI                                     "去掉欢迎界面
@@ -313,11 +313,7 @@ endif
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
 set writebackup                             "保存文件前建立备份，保存成功后删除该备份
-<<<<<<< HEAD
 " set nobackup                                "设置无备份文件
-=======
-set nobackup                                "设置无备份文件
->>>>>>> 43ec756dd316b2b9e73aca66d41b4d0c45ec37eb
 set noswapfile                              "设置无临时文件
 set vb t_vb=                                "关闭提示音
 set noerrorbells
